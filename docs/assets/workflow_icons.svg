@@ -1,0 +1,104 @@
+<svg width="1400" height="940" viewBox="0 0 1400 940" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EDAgent common workflows">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#edf5ff"/>
+    </linearGradient>
+    <filter id="sd" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#9fb3c8" flood-opacity="0.35"/>
+    </filter>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5f7892"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="940" fill="url(#bg2)"/>
+
+  <text x="700" y="56" text-anchor="middle" font-family="Segoe UI, Arial" font-size="36" font-weight="700" fill="#123f73">Common Workflow Map</text>
+  <text x="700" y="84" text-anchor="middle" font-family="Segoe UI, Arial" font-size="16" fill="#4f6f8d">Workflow-first routing: classify workflow first, then choose skills within that workflow</text>
+
+  <!-- Main rail -->
+  <g filter="url(#sd)">
+    <rect x="90" y="118" width="220" height="78" rx="14" fill="#1e5aa6"/>
+    <rect x="355" y="118" width="220" height="78" rx="14" fill="#00796b"/>
+    <rect x="620" y="118" width="220" height="78" rx="14" fill="#7b1fa2"/>
+    <rect x="885" y="118" width="220" height="78" rx="14" fill="#d17b00"/>
+    <rect x="1150" y="118" width="170" height="78" rx="14" fill="#455a64"/>
+  </g>
+  <text x="200" y="153" text-anchor="middle" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#fff">User Task</text>
+  <text x="465" y="153" text-anchor="middle" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#fff">Agent</text>
+  <text x="730" y="153" text-anchor="middle" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#fff">Skill</text>
+  <text x="995" y="153" text-anchor="middle" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#fff">EDA Tools</text>
+  <text x="1235" y="153" text-anchor="middle" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#fff">Result</text>
+  <line x1="310" y1="157" x2="355" y2="157" stroke="#5f7892" stroke-width="4" marker-end="url(#a)"/>
+  <line x1="575" y1="157" x2="620" y2="157" stroke="#5f7892" stroke-width="4" marker-end="url(#a)"/>
+  <line x1="840" y1="157" x2="885" y2="157" stroke="#5f7892" stroke-width="4" marker-end="url(#a)"/>
+  <line x1="1105" y1="157" x2="1150" y2="157" stroke="#5f7892" stroke-width="4" marker-end="url(#a)"/>
+
+  <!-- Cards grid -->
+  <g filter="url(#sd)">
+    <rect x="80" y="240" width="400" height="150" rx="16" fill="#ffffff"/>
+    <rect x="500" y="240" width="400" height="150" rx="16" fill="#ffffff"/>
+    <rect x="920" y="240" width="400" height="150" rx="16" fill="#ffffff"/>
+
+    <rect x="80" y="410" width="400" height="150" rx="16" fill="#ffffff"/>
+    <rect x="500" y="410" width="400" height="150" rx="16" fill="#ffffff"/>
+    <rect x="920" y="410" width="400" height="150" rx="16" fill="#ffffff"/>
+
+    <rect x="80" y="580" width="400" height="150" rx="16" fill="#ffffff"/>
+    <rect x="500" y="580" width="400" height="150" rx="16" fill="#ffffff"/>
+    <rect x="920" y="580" width="400" height="150" rx="16" fill="#ffffff"/>
+  </g>
+
+  <!-- Titles -->
+  <g font-family="Segoe UI, Arial" fill="#12406f">
+    <text x="108" y="278" font-size="22" font-weight="700">Bug Fix</text>
+    <text x="528" y="278" font-size="22" font-weight="700">Repo Analysis</text>
+    <text x="948" y="278" font-size="22" font-weight="700">Feature Add</text>
+
+    <text x="108" y="448" font-size="22" font-weight="700">Refactor</text>
+    <text x="528" y="448" font-size="22" font-weight="700">Environment / Debug</text>
+    <text x="948" y="448" font-size="22" font-weight="700">EDA Experiment</text>
+
+    <text x="108" y="618" font-size="22" font-weight="700">Infra Evolution</text>
+    <text x="528" y="618" font-size="22" font-weight="700">Reporting / Slides</text>
+    <text x="948" y="618" font-size="22" font-weight="700">Onboarding</text>
+  </g>
+
+  <!-- Flows -->
+  <g font-family="Consolas, Monaco, monospace" font-size="14" fill="#31526f">
+    <text x="108" y="308">classify -> loop/implementer -> validate -> retro</text>
+    <text x="108" y="332">skills: eda-loop, eda-method-implementer, eda-retro</text>
+
+    <text x="528" y="308">inspect -> map gaps -> summarize risks -> next actions</text>
+    <text x="528" y="332">skills: eda-knowledge-explorer, eda-infra-maintainer</text>
+
+    <text x="948" y="308">hypothesis -> implement -> check -> version</text>
+    <text x="948" y="332">skills: designer, implementer, git-version-control</text>
+
+    <text x="108" y="478">scope lock -> structural cleanup -> regression check</text>
+    <text x="108" y="502">skills: eda-infra-maintainer, eda-method-implementer</text>
+
+    <text x="528" y="478">bootstrap check -> failure isolate -> minimal fix</text>
+    <text x="528" y="502">skills: eda-infra-maintainer, eda-loop</text>
+
+    <text x="948" y="478">preflight -> theory-veto -> run -> validation -> retro</text>
+    <text x="948" y="502">skills: preflight, veto, loop, retro, goal-driver</text>
+
+    <text x="108" y="648">guard audit -> catalog/KB sync -> policy update</text>
+    <text x="108" y="672">skills: eda-infra-maintainer, knowledge-gate, git</text>
+
+    <text x="528" y="648">question -> summarize -> slide refine -> publish</text>
+    <text x="528" y="672">skills: eda-retro, presentation-crafter, slide-refiner</text>
+
+    <text x="948" y="648">start deploying -> run_demo -> ask direction/constraints</text>
+    <text x="948" y="672">trigger: "开始部署EDAgent" / "Start deploying EDAgent"</text>
+  </g>
+
+  <!-- Legend -->
+  <rect x="80" y="770" width="1240" height="120" rx="14" fill="#ffffff" filter="url(#sd)"/>
+  <text x="108" y="806" font-family="Segoe UI, Arial" font-size="20" font-weight="700" fill="#12406f">Design Principle</text>
+  <text x="108" y="836" font-family="Segoe UI, Arial" font-size="16" fill="#31526f">1) User does not manage skill names/params/order.</text>
+  <text x="108" y="862" font-family="Segoe UI, Arial" font-size="16" fill="#31526f">2) Agent does not manage low-level tool internals.</text>
+  <text x="108" y="888" font-family="Segoe UI, Arial" font-size="16" fill="#31526f">3) Agent selects workflow first, then chooses next skill inside workflow subset.</text>
+</svg>

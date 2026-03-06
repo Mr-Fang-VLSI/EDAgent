@@ -3,6 +3,7 @@
 A deployable, skill-based research agent system for EDA workflows.
 
 ![EDAgent Workflow Overview](docs/assets/workflow_overview.svg)
+![EDAgent Common Workflow Icons](docs/assets/workflow_icons.svg)
 
 ## Why EDAgent
 EDAgent turns a complex research workflow into a practical product-like experience:
@@ -40,6 +41,13 @@ What `run_demo.py` does:
 - Keep paper/knowledge/tool artifacts organized and searchable.
 - Run experiment loops with post-run reflection and next-step recommendations.
 - Generate concise explanation decks for collaborators/advisors.
+
+## Workflow-First Orchestration
+EDAgent routes in two phases for stability and scalability:
+1. classify the task into a workflow class,
+2. choose the next skill only from that workflow's skill subset.
+
+This avoids global skill search on every turn and keeps routing predictable as skills grow.
 
 ## If You Use Codex/Claude-Style Agents
 After cloning the repo, you can start auto-deployment with one sentence in chat:
@@ -85,3 +93,4 @@ Please start with a scoped plan, run the first validation loop, and summarize ke
 See also:
 - `CONTRIBUTING.md`
 - `ROADMAP.md`
+- `docs/WORKFLOW_CATALOG.md`

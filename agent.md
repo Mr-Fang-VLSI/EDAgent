@@ -4,9 +4,49 @@
 This file is the top-level execution policy for this repository.
 Agent-level responsibilities must live here, not inside individual skills.
 
+## Workflow-First Routing Policy
+Agent must not do global skill selection across the full skill set by default.
+Instead, use two-step routing:
+1. classify current request into one workflow class,
+2. select next skill only inside that workflow's allowed skill subset.
+
+### Workflow Classes
+1. `bug_fix`: diagnose and fix regressions in scripts/policies.
+2. `repo_analysis`: inspect status, summarize architecture, map risks/gaps.
+3. `feature_add`: add a new capability with minimal-risk integration.
+4. `refactor`: improve structure without changing intended behavior.
+5. `environment_debug`: deployment/bootstrap/check failures.
+6. `eda_experiment_orchestration`: hypothesis-driven EDA execution loops.
+7. `infra_evolution`: knowledge/tool/skill stack maintenance or development.
+8. `reporting_slides`: explain results as concise summaries/slides.
+
+### Workflow -> Skill Subsets
+1. `bug_fix`: `eda-loop`, `eda-method-implementer`, `eda-infra-maintainer`, `eda-retro`
+2. `repo_analysis`: `eda-knowledge-explorer`, `eda-infra-maintainer`, `eda-loop`
+3. `feature_add`: `eda-method-implementer`, `eda-hypothesis-experiment-designer`, `eda-infra-maintainer`, `git-version-control`
+4. `refactor`: `eda-infra-maintainer`, `eda-method-implementer`, `git-version-control`
+5. `environment_debug`: `eda-infra-maintainer`, `eda-loop`, `eda-stage-checkpoint-golden`
+6. `eda_experiment_orchestration`: `eda-preflight-reflect`, `eda-theory-veto`, `eda-loop`, `eda-retro`, `bspdn-goal-driver`
+7. `infra_evolution`: `eda-infra-maintainer`, `eda-knowledge-gate-maintainer`, `git-version-control`
+8. `reporting_slides`: `eda-retro`, `academic-presentation-crafter`, `academic-slide-refiner`
+
+## Responsibility Split (Anti-Bloat Contract)
+To keep orchestration scalable, responsibilities are explicitly separated:
+1. classification layer (agent): determine workflow class.
+2. routing layer (agent): choose next skill from workflow subset only.
+3. parameter layer (skill interface): fill skill-level inputs/constraints.
+4. execution layer (skill/tool): run scripts/tools and produce artifacts.
+5. recovery layer (workflow policy): retry/fallback/escalation rules.
+6. evaluation layer (workflow + domain gate): decide pass/fail/next step.
+7. memory layer (infra policy): persist knowledge/SOP updates when justified.
+
+Agent should own only layers 1-2 and high-level 5/6 decisions.
+Skill/tool implementations should own layer 3-4 details.
+Infra governance should own layer 7.
+
 ## Agent Owns (Global)
 1. Interpret user intent, constraints, and risk level.
-2. Select the minimal skill set and execution order.
+2. Classify workflow class and select minimal skill sequence within workflow subset.
 3. Enforce cross-skill policies (baseline lock, comparison fairness, promotion rules).
 4. Decide whether to recurse into another loop after retrospective evidence.
 5. Decide whether a gap should be fixed in skill/docs/scripts now.
@@ -24,11 +64,19 @@ Agent-level responsibilities must live here, not inside individual skills.
 4. User-facing orchestration contract for all task types.
 
 ## Standard Agent Flow
-1. Classify request type and required evidence level.
-2. If high-cost/high-risk, run `eda-theory-veto` before execution.
-3. Run one scoped execution via `eda-loop` with explicit artifacts.
-4. If batch/experiment completed, run `eda-retro` for mechanism and next-step decision.
-5. Apply minimal maintenance updates only when a repeated gap is confirmed.
+1. Classify request into one workflow class.
+2. Build a workflow-local skill shortlist (not global skill search).
+3. Pick next skill and execute one bounded step with explicit artifacts.
+4. Evaluate result and either continue workflow, recover, or stop.
+5. Run retrospective/memory update only when evidence justifies persistent change.
+
+## Workflow State Machine
+Each workflow step should follow:
+1. `PLAN`: identify next bounded action.
+2. `EXECUTE`: run selected skill/tool path.
+3. `CHECK`: validate artifacts/metrics against workflow gates.
+4. `RECOVER`: fallback/retry/alternative branch when check fails.
+5. `COMMIT`: update knowledge/SOP/version records when check passes.
 
 ## Deployment Onboarding Contract
 For a newly deployed environment (or first interaction in a new repo), agent must do this before normal execution:
