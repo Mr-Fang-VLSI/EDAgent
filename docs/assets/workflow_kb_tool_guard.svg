@@ -1,0 +1,82 @@
+<svg width="1400" height="820" viewBox="0 0 1400 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Knowledge and tool guard loop">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#ebf5ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#a6bacf" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5a7590"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="820" fill="url(#bg)"/>
+
+  <text x="700" y="52" text-anchor="middle" font-family="Segoe UI, Arial" font-size="34" font-weight="700" fill="#123f73">Knowledge & Tool Guard During Workflow Execution</text>
+  <text x="700" y="80" text-anchor="middle" font-family="Segoe UI, Arial" font-size="16" fill="#4f6f8d">Use existing evidence and tools first, then execute, then write back lessons to prevent hallucination and wheel reinvention</text>
+
+  <!-- Top flow -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="130" width="240" height="96" rx="14" fill="#1f5ca8"/>
+    <rect x="360" y="130" width="240" height="96" rx="14" fill="#00796b"/>
+    <rect x="640" y="130" width="240" height="96" rx="14" fill="#7b1fa2"/>
+    <rect x="920" y="130" width="240" height="96" rx="14" fill="#d07a00"/>
+    <rect x="1200" y="130" width="120" height="96" rx="14" fill="#455a64"/>
+  </g>
+
+  <text x="200" y="168" text-anchor="middle" font-family="Segoe UI, Arial" font-size="23" font-weight="700" fill="#fff">Workflow Step</text>
+  <text x="200" y="194" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#dbe9ff">PLAN / EXECUTE / CHECK</text>
+
+  <text x="480" y="168" text-anchor="middle" font-family="Segoe UI, Arial" font-size="23" font-weight="700" fill="#fff">Query KB</text>
+  <text x="480" y="194" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#ddfff9">knowledge_base + papers</text>
+
+  <text x="760" y="168" text-anchor="middle" font-family="Segoe UI, Arial" font-size="23" font-weight="700" fill="#fff">Query Tools</text>
+  <text x="760" y="194" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#f1ddff">tool_registry + scripts</text>
+
+  <text x="1040" y="168" text-anchor="middle" font-family="Segoe UI, Arial" font-size="23" font-weight="700" fill="#fff">Execute</text>
+  <text x="1040" y="194" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#fff0dd">selected skill/tool path</text>
+
+  <text x="1260" y="168" text-anchor="middle" font-family="Segoe UI, Arial" font-size="23" font-weight="700" fill="#fff">Result</text>
+  <text x="1260" y="194" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#e4eef6">artifact</text>
+
+  <line x1="320" y1="178" x2="360" y2="178" stroke="#5a7590" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="600" y1="178" x2="640" y2="178" stroke="#5a7590" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="880" y1="178" x2="920" y2="178" stroke="#5a7590" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1160" y1="178" x2="1200" y2="178" stroke="#5a7590" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Guard panel -->
+  <rect x="80" y="280" width="1240" height="170" rx="14" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="110" y="320" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#123f73">Anti-Hallucination & No-Reinvent Guard</text>
+  <text x="110" y="355" font-family="Segoe UI, Arial" font-size="17" fill="#31526f">1) Before execution, require KB evidence or explicit "no evidence found" note.</text>
+  <text x="110" y="383" font-family="Segoe UI, Arial" font-size="17" fill="#31526f">2) Before coding/tooling, require tool catalog lookup or explicit "new tool needed" decision.</text>
+  <text x="110" y="411" font-family="Segoe UI, Arial" font-size="17" fill="#31526f">3) If existing method/tool matches, reuse first; avoid duplicate implementation by default.</text>
+
+  <!-- Write-back loop -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="500" width="260" height="110" rx="14" fill="#00695c"/>
+    <rect x="380" y="500" width="320" height="110" rx="14" fill="#1565c0"/>
+    <rect x="740" y="500" width="280" height="110" rx="14" fill="#7b1fa2"/>
+    <rect x="1060" y="500" width="260" height="110" rx="14" fill="#455a64"/>
+  </g>
+
+  <text x="210" y="545" text-anchor="middle" font-family="Segoe UI, Arial" font-size="22" font-weight="700" fill="#fff">Extract Lessons</text>
+  <text x="210" y="570" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#d7fff7">from run + feedback</text>
+
+  <text x="540" y="545" text-anchor="middle" font-family="Segoe UI, Arial" font-size="22" font-weight="700" fill="#fff">Update Knowledge Base</text>
+  <text x="540" y="570" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#dbe9ff">problem/method/evidence notes</text>
+
+  <text x="880" y="545" text-anchor="middle" font-family="Segoe UI, Arial" font-size="22" font-weight="700" fill="#fff">Update Tool Registry</text>
+  <text x="880" y="570" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#f1ddff">reuse hints + lifecycle</text>
+
+  <text x="1190" y="545" text-anchor="middle" font-family="Segoe UI, Arial" font-size="22" font-weight="700" fill="#fff">SOP Hardened</text>
+  <text x="1190" y="570" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#e4eef6">next run faster/safer</text>
+
+  <line x1="340" y1="555" x2="380" y2="555" stroke="#5a7590" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="700" y1="555" x2="740" y2="555" stroke="#5a7590" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1020" y1="555" x2="1060" y2="555" stroke="#5a7590" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <path d="M1260,610 C1260,700 900,730 260,650" fill="none" stroke="#5a7590" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="760" y="742" text-anchor="middle" font-family="Segoe UI, Arial" font-size="15" fill="#3f5f7d">Persistent loop: execution writes back to KB/tool/SOP, reducing hallucination and duplicate work over time</text>
+</svg>
