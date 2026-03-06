@@ -1,6 +1,6 @@
 # EDA Agent + Skill Standalone Bundle
 
-- generated_at: `2026-03-06 12:14:45`
+- generated_at: `2026-03-06 12:20:57`
 - source_repo: `/mnt/research/Hu_Jiang/Students/Fang_Donghao/TAMU-ASAP07-BSPDN-BPR-V0.00`
 
 ## What It Can Do
@@ -8,6 +8,12 @@
 - Manage literature flow: retrieval, local PDF parsing, evidence indexing, and landscape updates.
 - Run gated execution loops with theory-veto, experiment contracts, and maintenance audits.
 - Maintain a skill-based automation stack with tool catalog, knowledge base, and manifest governance.
+
+## Open-Source Scope
+- This repository is for research and experimentation.
+- No production SLA, no warranty, and no guarantee of correctness for all environments.
+- Please validate results independently before any high-stakes use.
+- See `CONTRIBUTING.md` for contribution workflow and `ROADMAP.md` for current priorities.
 
 ## Installation
 ### Prerequisites
