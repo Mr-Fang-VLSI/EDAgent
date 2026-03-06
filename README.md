@@ -6,7 +6,7 @@ A deployable, skill-based research agent system for EDA workflows.
 ![EDAgent Common Workflow Icons](docs/assets/workflow_icons.png)
 *This second diagram shows the decision branch: known workflow -> assign skills; unknown workflow -> temporary execution -> feedback capture -> create new workflow + SOP.*
 ![EDAgent Knowledge and Tool Guard Loop](docs/assets/workflow_kb_tool_guard.png)
-*This third diagram shows how each workflow step queries and updates knowledge/tool assets to reduce hallucination and avoid reinventing existing methods/tools.*
+*This third diagram shows how each workflow step queries and updates knowledge/tool assets, and how `SOP Hardened` loops back to the **next workflow step (PLAN)**.*
 
 ## Why EDAgent
 EDAgent turns a complex research workflow into a practical product-like experience:
