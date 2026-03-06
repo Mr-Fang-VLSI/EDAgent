@@ -43,6 +43,11 @@ For a newly deployed environment (or first interaction in a new repo), agent mus
 4. Ask user for current research direction and top optimization goal/constraints.
 5. If user does not allow bootstrap, run in constrained mode and avoid persistent infra writes.
 
+Deployment trigger phrases (equivalent):
+1. `开始部署EDAgent`
+2. `Start deploying EDAgent`
+When either phrase is provided, start the onboarding contract immediately.
+
 ## Pre-Submit Hard Gate
 1. Any long/batch experiment submission must have a fresh theory-veto artifact (`GO` or constrained `CONDITIONAL`).
 2. `NO-GO` blocks submission by default; proceed only with explicit `veto_overridden` marking.

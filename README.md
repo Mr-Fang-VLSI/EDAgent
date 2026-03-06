@@ -40,6 +40,24 @@ What `run_demo.py` does:
 - Generate concise explanation decks for collaborators/advisors.
 
 ## If You Use Codex/Claude-Style Agents
+After cloning the repo, you can start auto-deployment with one sentence in chat:
+
+```text
+开始部署EDAgent
+```
+
+or
+
+```text
+Start deploying EDAgent
+```
+
+Expected behavior after this trigger:
+- verify repo/environment status,
+- bootstrap/verify infra folders,
+- run guard/audit/index checks,
+- ask your research direction and hard constraints.
+
 After clone + `python3 run_demo.py`, ask the agent to continue from your direction and constraints.
 
 Example prompt:
