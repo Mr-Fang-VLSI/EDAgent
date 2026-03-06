@@ -4,13 +4,13 @@ A deployable, skill-based research agent system for EDA workflows.
 
 ![EDAgent Workflow Overview](docs/assets/workflow_overview.svg)
 
-### Workflow Decision Logic (Text Version)
+### Workflow Decision Logic
 - The agent first decides whether the task matches a **known workflow**.
 - If **known**, it directly selects the corresponding **skill subset** and executes.
 - If **unknown**, it runs a temporary safe flow, captures feedback, and then creates a reusable **new workflow + SOP**.
 - Future similar tasks are routed through this new known workflow.
 
-### Knowledge/Tool Guard Loop (Text Version)
+### Knowledge/Tool Guard Loop
 - Before execution, the agent checks the **knowledge base** and **tool registry** first.
 - It prefers reusing existing methods/tools to reduce hallucination and avoid duplicate implementation.
 - After execution, it writes lessons back to KB/tools/SOP.
