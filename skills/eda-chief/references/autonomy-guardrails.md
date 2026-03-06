@@ -15,7 +15,7 @@ Not allowed:
 Priority order:
 1. update specialist skill,
 2. update KB/gate/tooling,
-3. update execution orchestrator skill (`eda-loop`) or `agent.md` policy last.
+3. update execution orchestrator skill (`eda-loop`) or `AGENTS.md` policy last.
 
 Self-update trigger (all required):
 1. repeated orchestration gap in >=2 interactions,

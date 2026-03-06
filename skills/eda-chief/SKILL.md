@@ -10,11 +10,11 @@ description: Legacy compatibility shim for historical eda-chief calls. Use when 
 `eda-chief` is no longer the primary orchestrator.
 It is a compatibility layer for older workflows that still call this skill name.
 
-Top-level governance is defined in `agent.md` at repo root.
+Top-level governance is defined in `AGENTS.md` at repo root.
 
 ## What to do when invoked
 
-1. Load `agent.md` and follow its global routing/governance policy.
+1. Load `AGENTS.md` and follow its global routing/governance policy.
 2. Convert legacy "chief-style" request into a scoped execution brief.
 3. Dispatch execution to `eda-loop`.
 4. Add control skills only when needed:
@@ -25,7 +25,7 @@ Top-level governance is defined in `agent.md` at repo root.
 ## Hard boundaries
 
 1. Do not redefine global entry policy inside this skill.
-2. Do not duplicate global recursion/self-update policy from `agent.md`.
+2. Do not duplicate global recursion/self-update policy from `AGENTS.md`.
 3. Prefer domain skills for domain reasoning and implementation.
 4. Mention compatibility mode explicitly when this skill is used.
 

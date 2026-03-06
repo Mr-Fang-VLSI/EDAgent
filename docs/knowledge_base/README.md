@@ -53,7 +53,7 @@ If this is skipped, the run is considered non-baseline and should not be used as
 - `82_BACKSIDE_SHORT_NET_DIAGNOSIS_AND_JUDGMENT_MODEL_20260304.md`: why backside short nets appear and why a judgment model is required beyond `min(front,back)`.
 - `83_REPLACE_DUALSIDE_OBJECTIVE_UPGRADE_PLAN_20260304.md`: RePlAce dual-side objective upgrade plan (signal-first + capacity-aware), with gate-driven validation and PPA-case target.
 - `84_REPLACE_COMPARISON_POLICY_20260304.md`: hard benchmarking policy (algorithm claims must be Vanilla RePlAce vs modified RePlAce; Innovus is downstream validation only).
-- `85_SKILL_SYSTEM_INTEGRATION_20260304.md`: skill-system integration history; latest governance entry is `agent.md` (root), with `eda-chief` as compatibility shim.
+- `85_SKILL_SYSTEM_INTEGRATION_20260304.md`: skill-system integration history; latest governance entry is `AGENTS.md` (root), with `eda-chief` as compatibility shim.
 - `86_PAPER_EVIDENCE_LIBRARY_AND_RETRIEVAL_20260304.md`: paper storage/retrieval architecture for semantic + keyword + logic search.
 - `88_PDF_PARSING_PIPELINE_GROBID_FIRST_20260304.md`: default local paper parsing pipeline (GROBID-first + fallback) and artifact contract.
 - `90_HYPOTHESIS_VALIDATION_LOG.md`: running log of hypothesis, validation experiment, evidence, and conclusion.

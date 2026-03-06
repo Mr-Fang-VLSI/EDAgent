@@ -97,7 +97,7 @@ def main() -> int:
     known = {r["skill"] for r in rows}
 
     # Agent/entry policy
-    agent_md_path = repo_root / "agent.md"
+    agent_md_path = repo_root / "AGENTS.md"
     agent_md_exists = agent_md_path.exists()
     entry_skills = [r["skill"] for r in rows if r.get("user_entry", "0").strip() == "1" and r.get("status", "") == "active"]
     entry_count_ok = len(entry_skills) <= 1
@@ -282,7 +282,7 @@ def main() -> int:
     lines.append(f"- agent_md: `{agent_md_path}`")
     lines.append(f"- agent_md_exists: `{'YES' if agent_md_exists else 'NO'}`")
     lines.append(f"- active_entry_skills: `{','.join(entry_skills) if entry_skills else 'none'}`")
-    lines.append("- entry_policy_rule: `agent.md must exist; active entry skills <=1; if present, entry skill should be eda-chief (compat)`")
+    lines.append("- entry_policy_rule: `AGENTS.md must exist; active entry skills <=1; if present, entry skill should be eda-chief (compat)`")
     lines.append(f"- entry_policy_ok: `{'YES' if entry_policy_ok else 'NO'}`")
     lines.append("")
     lines.append("## Dependency Check")

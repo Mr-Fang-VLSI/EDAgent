@@ -8,7 +8,7 @@ description: "Execute one scoped EDA task under governed gates: run bootstrap ch
 ## Role Boundary
 
 `eda-loop` is the execution orchestrator for a scoped task.
-Global entry, cross-task governance, and recursion policy belong to `agent.md` (repo root).
+Global entry, cross-task governance, and recursion policy belong to `AGENTS.md` (repo root).
 
 Use this skill when you need disciplined execution with explicit artifacts.
 

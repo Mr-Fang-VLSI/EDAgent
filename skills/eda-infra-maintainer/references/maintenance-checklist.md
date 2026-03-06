@@ -10,7 +10,7 @@
 
 ## Change
 1. Keep edits minimal and scoped to the confirmed gap.
-2. Preserve agent/skill boundary in `agent.md`.
+2. Preserve agent/skill boundary in `AGENTS.md`.
 3. Update manifest/routing if a new skill is introduced.
 
 ## Post-change

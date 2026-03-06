@@ -1,4 +1,4 @@
 interface:
   display_name: "EDA Chief"
   short_description: "Legacy compatibility shim for old chief-based flows"
-  default_prompt: "Use $eda-chief only for backward compatibility, then dispatch execution to $eda-loop under repo-level agent.md policy."
+  default_prompt: "Use $eda-chief only for backward compatibility, then dispatch execution to $eda-loop under repo-level AGENTS.md policy."

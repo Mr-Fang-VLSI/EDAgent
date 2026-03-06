@@ -12,10 +12,10 @@ Apply at least one update when any condition is met:
 2. Knowledge base update (policy traceability)
 3. Gate flow update (prevent recurrence)
 4. Tool catalog refresh (discoverability)
-5. `eda-loop` update or `agent.md` policy update (last resort)
+5. `eda-loop` update or `AGENTS.md` policy update (last resort)
 
 ## Orchestrator-update guard
-Allow `eda-loop`/`agent.md` update only when:
+Allow `eda-loop`/`AGENTS.md` update only when:
 1. The same orchestration gap appeared in >=2 interactions.
 2. Updating a specialized skill cannot resolve it cleanly.
 3. Proposed change is minimal and reversible.

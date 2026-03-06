@@ -54,7 +54,7 @@ def run_checks() -> List[CheckRow]:
     rows: List[CheckRow] = []
 
     # Agent policy baseline
-    check_file(rows, "agent_policy", "agent.md")
+    check_file(rows, "agent_policy", "AGENTS.md")
 
     # Knowledge base baseline
     for rel in [

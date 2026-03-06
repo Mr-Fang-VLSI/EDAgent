@@ -1,6 +1,6 @@
 # Delegation Matrix
 
-Top-level routing policy lives in repo `agent.md`; this matrix is compatibility guidance for legacy `eda-chief` calls.
+Top-level routing policy lives in repo `AGENTS.md`; this matrix is compatibility guidance for legacy `eda-chief` calls.
 
 Use minimal-set delegation:
 

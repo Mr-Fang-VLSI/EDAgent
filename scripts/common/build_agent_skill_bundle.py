@@ -83,7 +83,7 @@ def build_bundle(out_dir: Path) -> None:
         shutil.move(str(git_backup), str(out_dir / '.git'))
 
     # Core files/dirs
-    safe_copy(ROOT / 'agent.md', out_dir / 'agent.md')
+    safe_copy(ROOT / 'AGENTS.md', out_dir / 'AGENTS.md')
     copy_tree_filtered(ROOT / 'skills', out_dir / 'skills')
 
     kb_keep = {
@@ -252,7 +252,7 @@ def build_bundle(out_dir: Path) -> None:
                 '```',
                 '',
                 '## System Composition',
-                '- `agent.md`: top-level policy and cross-skill governance boundary.',
+                '- `AGENTS.md`: top-level policy and cross-skill governance boundary.',
                 '- `skills/`: executable capability units (orchestration, research chain, domain methods, infra maintenance).',
                 '- `docs/knowledge_base/`: protocol, landscape, and governance knowledge.',
                 '- `docs/tool_registry/`: tool metadata/catalog for discoverability and lifecycle control.',
@@ -492,7 +492,7 @@ def build_bundle(out_dir: Path) -> None:
                 '',
                 '## Update Policy',
                 '- Roadmap is updated when priorities shift materially.',
-                '- Keep changes concise and aligned with repository governance in `agent.md`.',
+                '- Keep changes concise and aligned with repository governance in `AGENTS.md`.',
             ]
         )
         + '\n',

@@ -12,7 +12,7 @@ Use this skill when the user asks for an end-to-end research workflow, not a sin
 ## Scope
 
 This skill orchestrates the full chain and delegates each stage to specialized skills.
-Global governance still follows `agent.md`.
+Global governance still follows `AGENTS.md`.
 
 ## Stage flow
 

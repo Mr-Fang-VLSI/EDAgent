@@ -5,7 +5,7 @@ Ensure the EDA agent can reliably use, maintain, and develop core infrastructure
 1. knowledge base (`docs/knowledge_base/*`),
 2. tool registry and reusable scripts (`docs/tool_registry/*`, `scripts/common/*`),
 3. skills system (`skills/*`, manifest, routing, audits),
-4. repo-level agent governance (`agent.md`).
+4. repo-level agent governance (`AGENTS.md`).
 5. research-chain workflow infrastructure (`init_research_chain`, `research_chain_guard`, chain skills).
 
 ## Operating modes
@@ -38,7 +38,7 @@ python3 scripts/common/research_chain_guard.py --chain-dir <dir> --out-prefix <p
 If critical checks fail, block promotion/claim and fix baseline first.
 
 ## Skill ownership
-1. global policy owner: `agent.md`
+1. global policy owner: `AGENTS.md`
 2. scoped execution orchestrator: `eda-loop`
 3. infrastructure maintenance owner: `eda-infra-maintainer`
 4. gate hygiene utility: `eda-knowledge-gate-maintainer`

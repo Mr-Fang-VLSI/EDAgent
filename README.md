@@ -101,7 +101,7 @@ Please start with a scoped plan, run the first validation loop, and summarize ke
 ```
 
 ## Repository Layout
-- `agent.md`: top-level governance and orchestration policy.
+- `AGENTS.md`: top-level governance and orchestration policy.
 - `skills/`: modular capabilities (execution, infra maintenance, domain methods).
 - `scripts/common/`: reusable infra and indexing utilities.
 - `docs/knowledge_base/`: protocol and landscape knowledge.

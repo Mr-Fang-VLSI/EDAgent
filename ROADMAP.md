@@ -24,4 +24,4 @@
 
 ## Update Policy
 - Roadmap is updated when priorities shift materially.
-- Keep changes concise and aligned with repository governance in `agent.md`.
+- Keep changes concise and aligned with repository governance in `AGENTS.md`.
