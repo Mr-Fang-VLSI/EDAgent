@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic Presentation Crafter"
+  short_description: "Draft research slide decks from technical artifacts"
+  default_prompt: "Use $academic-presentation-crafter to turn papers/experiment notes into a clear first-pass academic slide deck."

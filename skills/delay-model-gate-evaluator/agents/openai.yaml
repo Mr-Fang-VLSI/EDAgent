@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delay Model Gates"
+  short_description: "Run contract and bucketed gate scorecards."
+  default_prompt: "Use this skill to run Gate-0/Gate-1 checks and summarize delay-model consistency against HPWL."

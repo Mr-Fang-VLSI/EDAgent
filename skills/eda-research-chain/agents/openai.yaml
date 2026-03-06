@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Research Chain"
+  short_description: "End-to-end research chain orchestrator"
+  default_prompt: "Use this skill to run a complete EDA research chain from knowledge and literature to idea debate, hypothesis experiments, implementation, versioning, validation, and retrospective."

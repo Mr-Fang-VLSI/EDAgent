@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Stage Golden"
+  short_description: "Create immutable place/cts/route checkpoints."
+  default_prompt: "Use this skill to create or refresh stage golden checkpoints with DEF+V+SDC bundles."

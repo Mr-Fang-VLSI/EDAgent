@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Paper Fetch"
+  short_description: "Find and fetch primary-source papers when evidence is missing."
+  default_prompt: "Use this skill to search, triage, and download papers (arXiv/DOI/open-access) to support EDA claims."

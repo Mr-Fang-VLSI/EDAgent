@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Knowledge Gate"
+  short_description: "Run EDA knowledge gate and log updates."
+  default_prompt: "Use this skill to enforce knowledge gate, tool catalog query, and maintenance log updates for EDA tasks."

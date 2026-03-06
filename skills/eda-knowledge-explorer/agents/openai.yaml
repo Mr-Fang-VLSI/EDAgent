@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Knowledge Explorer"
+  short_description: "Map knowledge gaps and evidence needs"
+  default_prompt: "Use this skill to explore local EDA knowledge, identify evidence gaps, prepare paper download queues, and map evidence to research questions."

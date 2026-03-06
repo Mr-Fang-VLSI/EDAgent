@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Hypothesis Designer"
+  short_description: "Design falsifiable hypothesis experiments"
+  default_prompt: "Use this skill to convert research ideas into falsifiable hypotheses and experiment matrices with controls, metrics, thresholds, and promotion gates."

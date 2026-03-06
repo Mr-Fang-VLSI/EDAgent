@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic Slide Refiner"
+  short_description: "Compress and polish technical slides for short talks"
+  default_prompt: "Use $academic-slide-refiner to refine dense slides into concise 3-5 page, high-clarity academic presentation flow."

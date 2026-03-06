@@ -1,0 +1,5 @@
+name: eda-autoidea-bridge
+version: 1
+schema: v1
+short_description: "Bridge autoIdea outputs into local paper/knowledge/idea workflow"
+default_prompt: "Use $eda-autoidea-bridge to import autoIdea recommendations and idea drafts into the governed EDA pipeline."

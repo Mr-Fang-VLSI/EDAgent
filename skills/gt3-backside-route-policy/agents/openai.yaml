@@ -1,0 +1,4 @@
+interface:
+  display_name: "GT3 Backside Policy"
+  short_description: "Apply GT3 CTS/PDN/backside route policy."
+  default_prompt: "Use this skill when setting GT3 layer policy (CTS M4/M5, PDN high layers, signal backside BM1/BM2) and submitting runs."

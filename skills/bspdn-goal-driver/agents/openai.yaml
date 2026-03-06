@@ -1,0 +1,4 @@
+interface:
+  display_name: "BSPDN Goal Driver"
+  short_description: "Drive objective toward target PPA outcomes"
+  default_prompt: "Use this skill to drive BSPDN objective optimization toward explicit goals with gated experiments, goal tracking, and evidence-based go/no-go decisions."

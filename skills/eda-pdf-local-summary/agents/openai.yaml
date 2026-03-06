@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA PDF Summary"
+  short_description: "Summarize local PDF papers into evidence-ready notes."
+  default_prompt: "Use this skill to summarize a local paper PDF into methods, assumptions, evidence, and actionable takeaways for current experiments."

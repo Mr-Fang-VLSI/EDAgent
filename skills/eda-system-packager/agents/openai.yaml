@@ -1,0 +1,5 @@
+name: eda-system-packager
+version: 1
+schema: v1
+short_description: "Export standalone agent+skill bundle for independent repo"
+default_prompt: "Use $eda-system-packager to package current agent/skills into a standalone GitHub-ready bundle."

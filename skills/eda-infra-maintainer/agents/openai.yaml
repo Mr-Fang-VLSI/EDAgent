@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Infra Maintainer"
+  short_description: "Maintain and evolve agent/KB/tool/skills infrastructure"
+  default_prompt: "Use this skill to maintain or evolve EDA infrastructure: audit stack integrity, apply minimal-risk updates, validate changed skills, and report guard artifacts."

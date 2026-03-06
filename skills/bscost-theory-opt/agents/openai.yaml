@@ -1,0 +1,5 @@
+interface:
+  display_name: "BS Cost Theory Opt"
+  short_description: "Theory+optimization gate for backside cost model."
+  default_prompt: "Use this skill for principled backside cost-model fitting and stability-gated validation against HPWL, including contract checks, CV scorecards, and promotion decisions."
+

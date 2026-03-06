@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Method Implementer"
+  short_description: "Implement methods from hypothesis plans"
+  default_prompt: "Use this skill to implement EDA methods from approved hypothesis plans, enforce implementation contracts, run validations, and hand off version checkpoints."

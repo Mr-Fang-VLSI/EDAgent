@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Preflight Reflect"
+  short_description: "Diagnose latest evidence before launching experiments."
+  default_prompt: "Use this skill before experiment submission to analyze current route/timing evidence, identify method gaps, and produce a concrete A/B/C next-step with go/no-go decision."

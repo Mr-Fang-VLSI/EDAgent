@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Version Control"
+  short_description: "Git-based version checkpoints and delta docs"
+  default_prompt: "Use $git-version-control to commit and tag iterations, then record per-version characteristics and distinguishing points."

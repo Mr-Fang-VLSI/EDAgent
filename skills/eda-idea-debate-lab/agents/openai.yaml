@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Idea Debate Lab"
+  short_description: "Brainstorm and debate research ideas"
+  default_prompt: "Use this skill to brainstorm EDA ideas, run structured pro/con debate, and produce a decision memo with falsifiable assumptions."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "BS Cost Net"
+  short_description: "Web-backed backside cost model workflow."
+  default_prompt: "Use this skill for internet-assisted planning and execution of backside signal/clock net cost models, with stability-vs-HPWL evaluation across multiple designs."
