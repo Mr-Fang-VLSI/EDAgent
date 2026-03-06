@@ -14,7 +14,7 @@
 
   <rect width="1400" height="820" fill="url(#bg)"/>
 
-  <text x="700" y="52" text-anchor="middle" font-family="Segoe UI, Arial" font-size="34" font-weight="700" fill="#123f73">Knowledge & Tool Guard During Workflow Execution</text>
+  <text x="700" y="52" text-anchor="middle" font-family="Segoe UI, Arial" font-size="34" font-weight="700" fill="#123f73">Knowledge &amp; Tool Guard During Workflow Execution</text>
   <text x="700" y="80" text-anchor="middle" font-family="Segoe UI, Arial" font-size="16" fill="#4f6f8d">Use existing evidence and tools first, then execute, then write back lessons to prevent hallucination and wheel reinvention</text>
 
   <!-- Top flow -->
@@ -48,7 +48,7 @@
 
   <!-- Guard panel -->
   <rect x="80" y="280" width="1240" height="170" rx="14" fill="#ffffff" filter="url(#shadow)"/>
-  <text x="110" y="320" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#123f73">Anti-Hallucination & No-Reinvent Guard</text>
+  <text x="110" y="320" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#123f73">Anti-Hallucination &amp; No-Reinvent Guard</text>
   <text x="110" y="355" font-family="Segoe UI, Arial" font-size="17" fill="#31526f">1) Before execution, require KB evidence or explicit "no evidence found" note.</text>
   <text x="110" y="383" font-family="Segoe UI, Arial" font-size="17" fill="#31526f">2) Before coding/tooling, require tool catalog lookup or explicit "new tool needed" decision.</text>
   <text x="110" y="411" font-family="Segoe UI, Arial" font-size="17" fill="#31526f">3) If existing method/tool matches, reuse first; avoid duplicate implementation by default.</text>
