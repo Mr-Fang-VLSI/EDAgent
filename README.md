@@ -3,6 +3,10 @@
 - generated_at: `2026-03-07 03:20:27`
 - source_repo: `/mnt/research/Hu_Jiang/Students/Fang_Donghao/TAMU-ASAP07-BSPDN-BPR-V0.00`
 
+## Current Develop Focus
+- The main goal of the current `develop` update is to reduce token consumption during agent execution.
+- The second goal is to normalize the skill system so workflow ownership, skill boundaries, references, and reusable tools are more consistent and easier to maintain.
+
 ## What It Can Do
 - Govern end-to-end EDA research workflow from idea to validation and retrospective.
 - Manage literature flow: retrieval, local PDF parsing, evidence indexing, and landscape updates.
