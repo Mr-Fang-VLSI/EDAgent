@@ -1,0 +1,4 @@
+version: 1
+display_name: Workflow Router
+short_description: Canonical owner for workflow classification, skill routing, and new-skill decisions.
+default_prompt: Own the routing decision for this task: classify the workflow, map the request to the minimal skill set, and state whether a new skill is warranted.

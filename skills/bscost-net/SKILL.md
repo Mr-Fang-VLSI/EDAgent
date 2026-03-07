@@ -7,66 +7,25 @@ description: Plan and execute internet-assisted backside net cost modeling for s
 
 Use this skill to move model work from single-design intuition to reproducible, multi-design evidence.
 
-## Step 1: Scope and objective lock
-Define objective before tuning:
-1. `Primary`: model is more stable than HPWL across designs/seeds.
-2. `Secondary`: model improves correlation/sign behavior in key buckets (long/high-fanout clock-like nets).
-3. `No-claim`: do not claim superiority from one design only.
-4. Run preflight reflection first (`eda-preflight-reflect`) and capture current failure shape before designing next batch.
+## Background Knowledge Links
 
-## Step 2: Internet-backed benchmark selection
-Use network research with primary sources only:
-1. Confirm candidate open-source CPU/accelerator repos and status.
-2. Build benchmark set beyond systolic-array-only.
-3. Record selected commit/release identifiers in experiment notes.
+This skill should stay linked to:
+1. KB workflow and comparison-policy context for backside cost-model evaluation.
+2. Local paper-derived evidence or benchmark notes when choosing benchmark classes and publishable evidence framing.
+3. `eda-context-accessor` when current KB or tool context needs to be refreshed before benchmark or evaluation design.
 
-Minimum baseline set:
-1. `systolic_array_*` (continuity with existing results)
-2. `rocket-chip` class SoC design
-3. `gemmini` class accelerator design
-
-Load:
-- `references/benchmark_candidates.md`
-- `references/web_research_protocol.md`
-
-## Step 3: Model construction plan
-Build two model tracks:
-1. Backside signal-net cost model.
-2. Backside clock-net cost model.
-
-For theory-grounded fitting and promotion gates, pair with:
-1. `bscost-theory-opt`
-
-For both tracks, keep output fields aligned:
-1. `cost_front`, `cost_back`, `delta_cost`, `min_cost`
-2. target delay fields with fixed sign contract
-3. bucket tags (length, fanout, TSV-proxy)
-
-Load:
-- `references/model_plan.md`
-
-## Step 4: Evaluation protocol (HPWL baseline required)
-Always report model and HPWL side-by-side:
-1. Contract check (Gate-0): sign convention + sign accuracy.
-2. Bucketed scorecard (Gate-1): Pearson/Spearman/sign by regime.
-3. Stability panel:
-   - per-design and cross-design variance,
-   - seed sensitivity,
-   - pass-rate under fixed gate thresholds.
-
-Use existing scripts first:
-1. `scripts/debug/check_delay_model_contract.py`
-2. `scripts/debug/bucketed_delay_model_scorecard.py`
-
-## Step 5: Decision gate for promotion
-Promote model into active optimization only if:
-1. Gate-0 passes with fixed sign contract.
-2. In key buckets, model is not worse than HPWL.
-3. Stability across benchmark set is better than HPWL baseline.
-
-If not, keep model in shadow mode and iterate parameters/structure.
+If the planned benchmark set or evaluation claim conflicts with current KB or paper-derived background knowledge, keep that conflict explicit and route KB feedback instead of silently proceeding.
 
 ## Mandatory artifacts
 1. `contract.md/tsv` and `bucketed.md/tsv`
 2. design list + source links + commits
 3. one summary stating whether model is stably better than HPWL
+
+## Operational References
+
+1. Load `references/background-knowledge-links.md` when deciding which KB notes, paper-derived artifacts, and benchmark assumptions are authoritative for the current study.
+2. Load `references/benchmark_candidates.md` when selecting the benchmark panel or deciding whether the current panel is too narrow.
+3. Load `references/web_research_protocol.md` when network-backed benchmark expansion or provenance checking is required.
+4. Load `references/model_plan.md` when designing signal-net and clock-net modeling tracks and aligned output fields.
+5. Load `references/evaluation-protocol.md` when setting Gate-0/Gate-1 evaluation structure, HPWL comparison, or stability-panel reporting.
+6. Load `references/promotion-gate.md` when deciding whether the model remains in shadow mode or is eligible for active optimization.

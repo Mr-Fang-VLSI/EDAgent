@@ -9,6 +9,12 @@ description: Explore and structure local EDA knowledge, identify evidence gaps, 
 
 Use this skill at the start of a research topic or when evidence is fragmented across KB, logs, and papers.
 
+## Knowledge And Tool Interaction
+
+1. Use `eda-context-accessor` when the task first needs a shared scoped KB/tool snapshot before deeper evidence-gap mapping begins.
+2. Treat the local knowledge base as the primary evidence source once exploration starts.
+3. Write outputs as reusable knowledge artifacts that later skills can consume directly.
+
 ## Workflow
 
 1. Read core KB context and recent experiment summaries.

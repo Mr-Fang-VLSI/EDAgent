@@ -5,78 +5,65 @@ description: Use git to version-control local research/EDA iterations with repro
 
 # Git Version Control
 
-## Overview
+## When to use
 
-Create a repeatable git-based versioning workflow for experiments and code changes.
-Record each version with both git artifacts (commit/tag) and human-readable differentiators in a version log.
+Use this skill when the user asks to create baselines, compare versions, snapshot experiment states, prepare rollback points, or document each version's distinguishing characteristics.
 
-## Workflow
+## Shared Capability Boundary
 
-1. Inspect repository state before versioning.
-2. Define version scope and naming.
-3. Create commit and optional tag.
-4. Update version log with characteristics and distinguishing points.
-5. Validate traceability (`git show`, `git log`, file references).
+This skill is the direct workflow owner for git-coupled versioning tasks.
+It owns:
+- repository state inspection for versioning,
+- commit/tag/checkpoint preparation,
+- human-readable version-log traceability.
 
-## Step 1: Inspect State
+It does not own:
+- repo-wide governance policy,
+- artifact cleanup policy,
+- execution orchestration outside the versioning task itself.
 
-Run:
-- `git status --short`
-- `git branch --show-current`
-- `git log --oneline -n 5`
+`eda-loop` is not the default wrapper here. Use it only if a larger workflow delegates one bounded execution stage that must end in a git snapshot.
 
-If working tree contains unrelated dirty files, avoid touching them.
-Never use destructive reset/checkout unless user explicitly requests.
+## Expected Downstream Consumers
 
-## Step 2: Define Version Identity
+Typical consumers include:
+- `eda-method-implementer` after implementation milestones,
+- `eda-research-chain` during versioned development stages,
+- execution skills that need an explicit rollback point after a governed run.
 
-Prefer one clear version token:
-- `v<major>.<minor>.<patch>` for stable releases
-- `<topic>_YYYYMMDD_HHMM` for experiment snapshots
+## Inputs
 
-Recommended commit title format:
-- `<scope>: <version-token> <short-change-intent>`
-- Example: `delay-model: v0.3.1 enable criticality feed in scorer`
+Provide or derive:
+1. version scope and changed-file set,
+2. desired version identity style,
+3. whether a tag is required,
+4. comparison baseline and version-log destination.
 
-## Step 3: Commit and Tag
+## Outputs
 
-Typical sequence:
-```bash
-git add <changed-files>
-git commit -m "<scope>: <version-token> <short-change-intent>"
-git tag -a "<version-token>" -m "<summary>"   # optional but recommended for checkpoints
-```
+Return or update:
+- commit/tag or checkpoint identity,
+- version-log entry under `docs/versioning/` or equivalent topic log,
+- explicit baseline and differentiator record,
+- explicit statement of whether `eda-loop` was `not_used` or the versioning step was delegated from another workflow.
 
-If user wants comparison-only checkpoint without tagging, skip tag and record commit hash in log.
+## Knowledge And Tool Interaction
 
-## Step 4: Record Version Characteristics and Distinguishing Points
+1. Use existing project version logs or checkpoint notes as the local knowledge base for baseline selection and version naming continuity.
+2. If a task needs a shared tool-reuse lookup before adding versioning helpers, delegate that lookup to `eda-context-accessor`.
+3. Write version facts back into the human-readable project log so git metadata is paired with experiment meaning.
 
-Maintain one log file for the active project/topic, for example:
-- `docs/versioning/<topic>.version_log.md`
+## Hard Rules
 
-Use template and field definitions from:
-- `references/version-log-template.md`
+1. Inspect repository state before creating a new version artifact.
+2. Avoid touching unrelated dirty files.
+3. Never use destructive reset/checkout unless user explicitly requests.
+4. Every version artifact must be traceable through git metadata plus a human-readable log entry.
+5. Do not route routine versioning work through `eda-loop` unless the parent workflow explicitly delegates a bounded execution stage that ends in version capture.
 
-Mandatory fields per version entry:
-- version token / tag / commit hash
-- baseline reference (which previous version it compares to)
-- `characteristics` (本版本特点)
-- `distinguishing_points` (和基线的区分点)
-- changed files and validation evidence
+## Operational References
 
-## Step 5: Validate Traceability
-
-After each version entry, verify:
-- `git show --stat <commit-or-tag>`
-- `git diff --name-only <baseline>...<current>`
-- log file contains the same commit hash/tag and accurate delta summary
-
-## Command Playbook
-
-- latest version list: `git tag --list --sort=-creatordate`
-- compare two versions: `git diff --stat <v_old>...<v_new>`
-- inspect one version: `git show --name-status <tag-or-hash>`
-- recover file from version: `git checkout <tag-or-hash> -- <path>` (non-destructive to history)
-
-## Resources (optional)
-- `references/version-log-template.md`: canonical template for per-version feature/delta logging.
+1. Load `references/workflow-owner-usage.md` when deciding whether versioning is the direct workflow owner task or a delegated substage inside another workflow.
+2. Load `references/state-and-identity.md` when inspecting repository state or defining the version token, naming, and commit-title convention.
+3. Load `references/commit-tag-and-traceability.md` when preparing the actual commit/tag sequence, version-log fields, or post-commit traceability checks.
+4. Load `references/version-log-template.md` when writing or updating the human-readable per-version log entry.

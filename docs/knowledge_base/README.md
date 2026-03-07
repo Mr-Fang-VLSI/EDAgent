@@ -53,7 +53,7 @@ If this is skipped, the run is considered non-baseline and should not be used as
 - `82_BACKSIDE_SHORT_NET_DIAGNOSIS_AND_JUDGMENT_MODEL_20260304.md`: why backside short nets appear and why a judgment model is required beyond `min(front,back)`.
 - `83_REPLACE_DUALSIDE_OBJECTIVE_UPGRADE_PLAN_20260304.md`: RePlAce dual-side objective upgrade plan (signal-first + capacity-aware), with gate-driven validation and PPA-case target.
 - `84_REPLACE_COMPARISON_POLICY_20260304.md`: hard benchmarking policy (algorithm claims must be Vanilla RePlAce vs modified RePlAce; Innovus is downstream validation only).
-- `85_SKILL_SYSTEM_INTEGRATION_20260304.md`: skill-system integration history; latest governance entry is `AGENTS.md` (root), with `eda-chief` as compatibility shim.
+- `85_SKILL_SYSTEM_INTEGRATION_20260304.md`: skill-system integration history; latest governance entry is `AGENTS.md` (root), with direct routing through `workflow-router` and no compatibility entry skill.
 - `86_PAPER_EVIDENCE_LIBRARY_AND_RETRIEVAL_20260304.md`: paper storage/retrieval architecture for semantic + keyword + logic search.
 - `88_PDF_PARSING_PIPELINE_GROBID_FIRST_20260304.md`: default local paper parsing pipeline (GROBID-first + fallback) and artifact contract.
 - `90_HYPOTHESIS_VALIDATION_LOG.md`: running log of hypothesis, validation experiment, evidence, and conclusion.
@@ -67,6 +67,9 @@ If this is skipped, the run is considered non-baseline and should not be used as
 - `98_LITERATURE_FEEDBACK_LOOP.md`: auto-generated feedback report for missing directions and stale methods with targeted retrieval queue.
 - `99_AUTOIDEA_FUSION_REPORT_20260306.md`: bridge report that fuses autoIdea recommendation/idea outputs into local governed workflow.
 - `100_AGENT_SKILL_STANDALONE_PACKAGING_20260306.md`: standalone packaging workflow for exporting `agent+skills` into an independent repo-ready bundle.
+- `101_CTS_CONVERGENCE_ROOTCAUSE_SOP_20260306.md`: mandatory root-cause workflow for diagnosing CTS/route non-convergence before changing optimization knobs.
+- `102_DEVELOPMENT_PROMOTION_AND_PRINCIPLE_CAPTURE_SOP_20260307.md`: development-authority vs release-mirror policy, plus the rule that user-stated durable principles must be persisted into KB/protocol/SOP.
+- `103_SKILL_SYSTEM_UPGRADE_RETRO_AND_VALIDATION_PLAN_20260307.md`: retrospective for the recent skill-system upgrade, including expected benefits, falsification signals, and a later validation plan.
 - `templates/task_brief_template.md`: copy this to create a run brief before execution.
 - `templates/research_chain_task_brief_template.md`: task-brief template for full-chain research.
 - `templates/idea_debate_note_template.md`: standardized brainstorm/debate note format.

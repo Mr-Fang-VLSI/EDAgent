@@ -28,22 +28,14 @@ Required:
 Recommended:
 1. primary-source/web references when assumptions may drift.
 
-## Workflow
+## Background Knowledge Links
 
-1. Parse proposal into falsifiable assumptions.
-2. Check each assumption against:
-   - known physics/EDA constraints,
-   - local policy locks (comparison, route policy),
-   - current empirical evidence.
-3. Classify conflicts:
-   - hard contradiction,
-   - missing evidence,
-   - plausible but high-risk.
-4. Emit one verdict:
-   - `GO`: no blocking contradiction.
-   - `CONDITIONAL`: proceed only with listed constraints.
-   - `NO-GO`: block execution; provide minimum fix path.
-5. Provide minimal corrective experiment if vetoed.
+This skill is only valid when its veto logic is linked to explicit background knowledge:
+1. relevant KB policy and physics notes,
+2. local paper-derived evidence when the proposal touches theory or model assumptions,
+3. scoped retrieval from `eda-context-accessor` when the needed KB or paper context is missing from the current brief.
+
+If a proposal conflicts with linked background knowledge, the veto must say so explicitly rather than treating the conflict as a generic risk.
 
 ## Decision output contract
 
@@ -56,8 +48,8 @@ Always output:
    - NO-GO can be bypassed only with explicit user override.
    - when override happens, mark run as `veto_overridden`.
 
-## References
+## Operational References
 
-Load:
-1. `references/veto-criteria.md`
-2. `references/decision-template.md`
+1. Load `references/background-knowledge-links.md` when deciding which KB docs, paper summaries, or scoped retrieval outputs are authoritative for the current proposal.
+2. Load `references/veto-criteria.md` when classifying contradiction severity or deciding whether the result is GO, CONDITIONAL, or NO-GO.
+3. Load `references/decision-template.md` when writing the final veto artifact.

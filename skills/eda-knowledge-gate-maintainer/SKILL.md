@@ -5,49 +5,68 @@ description: Enforce experiment hygiene for this EDA repo. Utility skill for kno
 
 # EDA Knowledge Gate Maintainer
 
-## Invocation Policy
+## When to use
 
-1. Prefer invocation through `eda-loop`.
-2. Direct invocation is for gate-hygiene repair/debug only.
+Use this skill when the task needs:
+1. repo experiment-hygiene gate execution,
+2. enforced tool-reuse checks before adding scripts,
+3. maintenance-log writeback during scoped execution,
+4. diagnosis or repair of gate-hygiene failures.
 
-Run this workflow before and after each substantive interaction.
+## Shared Capability Boundary
 
-## Step 1: Enter the repo and run gate
+This skill owns:
+- invocation of the repo knowledge gate,
+- tool-query evidence for scoped execution work,
+- maintenance-log discipline around substantive work,
+- hard-failure policy for missing gate evidence.
 
-```bash
-ROOT=/mnt/research/Hu_Jiang/Students/Fang_Donghao/TAMU-ASAP07-BSPDN-BPR-V0.00
-cd "$ROOT"
-bash scripts/common/knowledge_gate.sh --scope <scope_name> --task-brief <task_brief_md>
-```
+It does not own:
+- domain conclusions,
+- workflow routing,
+- artifact cleanup policy,
+- KB retrieval beyond gate hygiene.
 
-Use a task brief under `slurm_logs/04_delay_modeling/` or matching experiment folder.
+## Expected Downstream Consumers
 
-## Step 2: Query existing tools before creating new scripts
+Typical consumers include:
+- `eda-loop` before and after substantive execution,
+- execution skills that submit jobs, create scripts, or write experiment artifacts,
+- `eda-infra-maintainer` when gate behavior itself needs repair.
 
-```bash
-python3 scripts/common/tool_catalog.py query <keyword1> <keyword2>
-```
+## Inputs
 
-Reuse existing scripts when possible. Only create new scripts when no suitable match exists.
+Provide or derive:
+1. interaction scope,
+2. task brief path,
+3. keywords for tool query,
+4. whether the call is routine gate use or gate-hygiene repair/debug.
 
-## Step 3: Log interaction start/end maintenance
+## Outputs
 
-Append one row to:
-- `slurm_logs/00_meta/knowledge_tool_maintenance_log.md`
+Return or update:
+- gate command evidence,
+- tool-query evidence,
+- maintenance-log row in `slurm_logs/00_meta/knowledge_tool_maintenance_log.md`,
+- explicit hard-failure reason if the gate contract is not satisfied.
 
-Minimum fields:
-- `interaction_scope`
-- `kb_used`
-- `tool_query`
-- `reused_or_new`
-- `updates_done`
-- `open_items`
+## Knowledge And Tool Interaction
 
-Load `references/checklist.md` and follow the exact pre/post checklist.
+1. Treat `knowledge_gate.sh` and `tool_catalog.py query` as canonical utilities, not optional suggestions.
+2. Use the task brief and current maintenance log as the minimum local evidence set for gate execution.
+3. Escalate to `eda-infra-maintainer` if repeated gate failures indicate a broken policy or missing infrastructure rather than a one-off task issue.
 
-## Step 4: Enforce hard gate behavior
+## Hard Rules
 
-Treat these as hard failures:
-1. Gate command fails.
-2. No tool-catalog query evidence for non-trivial work.
-3. No maintenance-log update after file/script/job changes.
+1. Gate command failure is a hard stop.
+2. Missing tool-query evidence for non-trivial work is a hard stop.
+3. Missing maintenance-log update after file/script/job changes is a hard stop.
+4. Do not silently continue if the task brief is missing for a scoped experiment interaction.
+
+## Operational References
+
+1. Load `references/invocation-scope.md` when deciding whether the call is routine `eda-loop` usage or direct gate-hygiene repair/debug.
+2. Load `references/gate-run-and-tool-query.md` when running the gate command and tool-catalog query.
+3. Load `references/maintenance-log-writeback.md` when writing the maintenance-log row and artifact summary.
+4. Load `references/hard-failure-policy.md` when deciding whether the interaction must stop or escalate due to missing gate evidence.
+5. Load `references/checklist.md` when you need the compact pre/post checklist view.

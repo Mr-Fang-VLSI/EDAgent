@@ -1,0 +1,4 @@
+version: 1
+display_name: EDA Context Accessor
+short_description: Shared KB and tool-registry retrieval utility for downstream skills.
+default_prompt: Load scoped knowledge-base context and tool-registry reuse evidence for this task, then emit a compact artifact that downstream skills can consume directly.

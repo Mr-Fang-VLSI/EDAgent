@@ -23,6 +23,7 @@ Choose one:
   - `docs/flow_reliability/cts_crash_rca_and_playbook.md`
   - `docs/flow_reliability/large_design_open_issues_tracker.md`
   - `docs/knowledge_base/10_TASK_EXECUTION_PROTOCOL.md`
+  - `docs/knowledge_base/101_CTS_CONVERGENCE_ROOTCAUSE_SOP_20260306.md`
 - D) Read:
   - `docs/knowledge_base/20_LAYER_POLICY_CTS_PDN_BACKSIDE.md`
   - `docs/knowledge_base/30_BACKSIDE_VIA_CONNECTIVITY_CHECKLIST.md`
@@ -40,6 +41,7 @@ Choose one:
 - E) Read:
   - `docs/knowledge_base/85_SKILL_SYSTEM_INTEGRATION_20260304.md`
   - `docs/knowledge_base/92_INFRASTRUCTURE_STEWARDSHIP_20260306.md`
+  - `docs/knowledge_base/102_DEVELOPMENT_PROMOTION_AND_PRINCIPLE_CAPTURE_SOP_20260307.md`
   - `docs/knowledge_base/93_EDA_RESEARCH_FULL_CHAIN_20260306.md`
   - `docs/knowledge_base/94_BSPDN_GOAL_MILESTONE_PLAN_20260306.md`
   - `docs/knowledge_base/95_PROBLEM_LANDSCAPE.md`
@@ -92,3 +94,9 @@ Every run must record:
   - `IMPSR-379: missing VIAGEN rules on layer BM1`
   - seen in `slurm_logs/gt3_route_rc_consistency_research_bsntsv_flowopen_20260303_230308_back_313239.out`
 - This warning can directly limit backside routability and must be addressed before drawing strong conclusions.
+
+## Persistent governance note
+- current repo = development authority
+- `exports/eda_agent_skill_system` = release mirror
+- principle/policy changes should be documented in the current repo first
+- do not auto-promote those changes to the export/public mirror without explicit user intent

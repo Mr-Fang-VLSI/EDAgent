@@ -9,21 +9,11 @@ description: Convert research ideas into falsifiable hypotheses and experiment p
 
 Use this skill after idea selection and before method implementation or expensive experiment submission.
 
-## Workflow
+## Knowledge And Tool Interaction
 
-1. Extract key assumptions from idea memo.
-2. Translate each assumption into a falsifiable hypothesis.
-3. Build an experiment matrix:
-- hypothesis ID,
-- manipulation,
-- control/baseline,
-- metrics,
-- expected direction,
-- pass/fail threshold,
-- confounders and mitigation.
-4. Define minimum sample panel and runtime budget.
-5. Mark promotion gate:
-- what evidence is required to move from hypothesis to implementation.
+1. If the task needs shared KB or tool lookup before formalizing hypotheses, delegate that step to `eda-context-accessor`.
+2. Use idea memos, KB context, and prior evidence artifacts as the basis for falsifiable hypothesis design instead of inventing hypotheses from scratch.
+3. Write experiment-design outputs so downstream implementation and validation skills can consume them directly.
 
 ## Outputs
 
@@ -37,7 +27,8 @@ Use this skill after idea selection and before method implementation or expensiv
 2. Metrics must match decision question (not just easy-to-collect metrics).
 3. Include at least one negative-control or ablation check when feasible.
 
-## Reference
+## Operational References
 
-Load when needed:
-1. `references/matrix-rules.md`
+1. Load `references/assumption-to-hypothesis.md` when extracting assumptions from an idea memo and turning them into falsifiable statements.
+2. Load `references/matrix-rules.md` when filling the experiment matrix columns, metrics, confounders, and pass/fail rules.
+3. Load `references/promotion-gate-design.md` when defining the evidence needed to move from hypothesis to implementation.

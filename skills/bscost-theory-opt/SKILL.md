@@ -7,72 +7,30 @@ description: Build and validate theory-grounded optimization models for backside
 
 Use this skill when the task is to move from heuristic cost terms to a validated optimization model that can be promoted only after passing gates.
 
-## Step 1: Lock metric contract before fitting
-1. Use signed target:
-   - `delta_tau_ps = tau_back_ps - tau_front_ps`
-2. Use signed model output:
-   - `delta_cost = cost_back - cost_front`
-3. Keep compatibility fields:
-   - `cost_front`, `cost_back`, `min_cost`
-4. Gate-0 contract checks are mandatory before any optimization claim.
+## Background Knowledge Links
 
-## Step 2: Theory-grounded feature setup
-Build from physically meaningful inputs first:
-1. Geometry:
-   - pin-based HPWL and bbox features
-2. Front/back timing proxy:
-   - PDK timing proxy, via proxy, fanout/load terms
-3. Backside overhead:
-   - nTSV/stack-via related terms (or best available proxy)
+This skill must stay grounded in:
+1. KB workflow and policy context, especially:
+- `docs/knowledge_base/80_BSCOST_THREE_SKILL_WORKFLOW_20260304.md`
+- `docs/knowledge_base/84_REPLACE_COMPARISON_POLICY_20260304.md`
+- relevant backside judgment KB notes when applicable.
+2. Paper-derived evidence already summarized into local notes or paper-summary artifacts.
+3. Scoped retrieval from `eda-context-accessor` when the task needs refreshed KB or paper context before fitting or promotion judgment.
 
-Use shared feature names across signal and clock tracks where possible.
-
-Load:
-- `references/theory_formulation.md`
-
-## Step 3: Optimization procedure
-1. Compare against HPWL baseline with identical split strategy.
-2. Use repeated cross-validation (default 5x2).
-3. Report per-fold and per-dataset metrics:
-   - Pearson
-   - Spearman
-   - sign accuracy
-4. Use same train/test partitions for baseline and candidate model.
-
-Load:
-- `references/optimization_and_gates.md`
-
-## Step 4: Promotion gates (stable > HPWL)
-Model can be promoted only if:
-1. Gate-0 pass:
-   - contract valid
-   - sign convention fixed
-2. Gate-1 (delay consistency) pass on all target datasets:
-   - `delta_pearson > 0`
-   - `delta_spearman >= 0`
-   - `delta_sign > 0`
-   - fold win-rate thresholds satisfied
-3. Gate-2 (absolute consistency floor) pass:
-   - candidate Pearson/Spearman/sign must exceed configured minimum floors
-4. Gate-3 (nTSV capacity behavior) pass:
-   - high-pressure bins/regions must receive positive cost uplift
-   - if coordinate-level region data is unavailable, use an explicit pressure proxy and mark as `proxy mode`
-5. Stability pass:
-   - no single dataset collapses below baseline in key metrics.
-
-If any gate fails, keep shadow mode and iterate model/feature design.
-
-## Step 5: Internet-backed benchmark expansion
-When moving beyond current datasets:
-1. Validate benchmark provenance from primary sources.
-2. Record repo links + commit/branch in summary artifact.
-3. Include CPU + accelerator classes (not only systolic arrays).
-
-Load:
-- `references/internet_benchmark_notes.md`
+If current empirical evidence contradicts the linked background knowledge:
+- keep the contradiction explicit,
+- block promotion if the theory basis is no longer defensible,
+- request KB update or overturn follow-up when needed.
 
 ## Mandatory artifacts
 1. `*.dataset.tsv` (dataset-level scorecard)
 2. `*.per_fold.tsv` (fold-level evidence)
 3. `*.summary.md` with final PASS/FAIL and open risks
 4. include gate mode flag: `region_exact` vs `proxy_mode`
+
+## Operational References
+
+1. Load `references/background-knowledge-links.md` when identifying which KB docs, paper summaries, and theory assumptions are authoritative for the current modeling task.
+2. Load `references/theory_formulation.md` when locking metric contract, sign convention, and physically meaningful feature blocks.
+3. Load `references/optimization_and_gates.md` when running repeated validation, HPWL comparison, and promotion gating.
+4. Load `references/internet_benchmark_notes.md` when extending beyond current datasets and benchmark provenance must be refreshed from primary sources.

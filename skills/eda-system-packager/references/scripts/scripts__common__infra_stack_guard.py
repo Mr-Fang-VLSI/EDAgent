@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit core infrastructure integrity: agent policy, KB, tool registry, and skills."""
+"""Audit core infrastructure integrity: AGENTS policy, KB, tool registry, and skills."""
 
 from __future__ import annotations
 
@@ -53,7 +53,7 @@ def check_file(rows: List[CheckRow], scope: str, rel: str, level: str = "critica
 def run_checks() -> List[CheckRow]:
     rows: List[CheckRow] = []
 
-    # Agent policy baseline
+    # AGENTS policy baseline
     check_file(rows, "agent_policy", "AGENTS.md")
 
     # Knowledge base baseline

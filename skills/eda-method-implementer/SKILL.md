@@ -9,6 +9,13 @@ description: Implement EDA research methods from approved hypothesis plans, with
 
 Use this skill when moving from experiment design to actual method/code implementation.
 
+## Knowledge And Tool Interaction
+
+1. Load the approved hypothesis and experiment-plan artifacts before touching code.
+2. If the task needs shared KB/tool lookup before implementation planning, delegate that step to `eda-context-accessor`.
+3. If `eda-context-accessor` reports `maintain`, `update`, `overturn`, or `add`, carry that recommendation into the implementation handoff so later validation/infra skills can act on it.
+4. Write implementation decisions and validation commands into explicit artifacts so later validation and retro skills can reuse them.
+
 ## Workflow
 
 1. Load approved hypothesis and experiment plan artifacts.

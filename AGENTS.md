@@ -4,59 +4,9 @@
 This file is the top-level execution policy for this repository.
 Agent-level responsibilities must live here, not inside individual skills.
 
-## Workflow-First Routing Policy
-Agent must not do global skill selection across the full skill set by default.
-Instead, use two-step routing:
-1. classify current request into one workflow class,
-2. select next skill only inside that workflow's allowed skill subset.
-
-### Workflow Classes
-1. `bug_fix`: diagnose and fix regressions in scripts/policies.
-2. `repo_analysis`: inspect status, summarize architecture, map risks/gaps.
-3. `feature_add`: add a new capability with minimal-risk integration.
-4. `refactor`: improve structure without changing intended behavior.
-5. `environment_debug`: deployment/bootstrap/check failures.
-6. `eda_experiment_orchestration`: hypothesis-driven EDA execution loops.
-7. `infra_evolution`: knowledge/tool/skill stack maintenance or development.
-8. `reporting_slides`: explain results as concise summaries/slides.
-
-### Workflow -> Skill Subsets
-1. `bug_fix`: `eda-loop`, `eda-method-implementer`, `eda-infra-maintainer`, `eda-retro`
-2. `repo_analysis`: `eda-knowledge-explorer`, `eda-infra-maintainer`, `eda-loop`
-3. `feature_add`: `eda-method-implementer`, `eda-hypothesis-experiment-designer`, `eda-infra-maintainer`, `git-version-control`
-4. `refactor`: `eda-infra-maintainer`, `eda-method-implementer`, `git-version-control`
-5. `environment_debug`: `eda-infra-maintainer`, `eda-loop`, `eda-stage-checkpoint-golden`
-6. `eda_experiment_orchestration`: `eda-preflight-reflect`, `eda-theory-veto`, `eda-loop`, `eda-retro`, `bspdn-goal-driver`
-7. `infra_evolution`: `eda-infra-maintainer`, `eda-knowledge-gate-maintainer`, `git-version-control`
-8. `reporting_slides`: `eda-retro`, `academic-presentation-crafter`, `academic-slide-refiner`
-
-### Known vs New Workflow Decision
-After intent parsing, agent must branch explicitly:
-1. If request matches a known workflow class:
-- use that workflow's skill subset and continue normal PLAN -> EXECUTE -> CHECK cycle.
-2. If request does not match any known workflow class:
-- run a temporary exploratory execution path using the minimal safe skill chain,
-- record task pattern, steps, failure/recovery signals, and user preference feedback,
-- if pattern is repeatable, create a new workflow definition and register its skill subset,
-- update related SOP/knowledge entries so future requests route directly to this new workflow.
-
-## Responsibility Split (Anti-Bloat Contract)
-To keep orchestration scalable, responsibilities are explicitly separated:
-1. classification layer (agent): determine workflow class.
-2. routing layer (agent): choose next skill from workflow subset only.
-3. parameter layer (skill interface): fill skill-level inputs/constraints.
-4. execution layer (skill/tool): run scripts/tools and produce artifacts.
-5. recovery layer (workflow policy): retry/fallback/escalation rules.
-6. evaluation layer (workflow + domain gate): decide pass/fail/next step.
-7. memory layer (infra policy): persist knowledge/SOP updates when justified.
-
-Agent should own only layers 1-2 and high-level 5/6 decisions.
-Skill/tool implementations should own layer 3-4 details.
-Infra governance should own layer 7.
-
 ## Agent Owns (Global)
 1. Interpret user intent, constraints, and risk level.
-2. Classify workflow class and select minimal skill sequence within workflow subset.
+2. Require an explicit routing decision before execution, using `workflow-router` as the canonical routing policy owner.
 3. Enforce cross-skill policies (baseline lock, comparison fairness, promotion rules).
 4. Decide whether to recurse into another loop after retrospective evidence.
 5. Decide whether a gap should be fixed in skill/docs/scripts now.
@@ -73,20 +23,45 @@ Infra governance should own layer 7.
 3. Global "self-modify skill system" requirements by default.
 4. User-facing orchestration contract for all task types.
 
-## Standard Agent Flow
-1. Classify request into one workflow class.
-2. Build a workflow-local skill shortlist (not global skill search).
-3. Pick next skill and execute one bounded step with explicit artifacts.
-4. Evaluate result and either continue workflow, recover, or stop.
-5. Run retrospective/memory update only when evidence justifies persistent change.
+## Skill Architecture Principle
 
-## Workflow State Machine
-Each workflow step should follow:
-1. `PLAN`: identify next bounded action.
-2. `EXECUTE`: run selected skill/tool path.
-3. `CHECK`: validate artifacts/metrics against workflow gates.
-4. `RECOVER`: fallback/retry/alternative branch when check fails.
-5. `COMMIT`: update knowledge/SOP/version records when check passes.
+The repo should keep three things separable:
+1. capability: what a skill knows how to do,
+2. knowledge: KB docs, paper-derived summaries, and background evidence,
+3. tools: reusable scripts and registry entries.
+
+Design rules:
+1. Skills should own capability and routing inside a bounded scope.
+2. Knowledge should live in the knowledge base or paper-derived artifacts, not be duplicated as large static background inside `SKILL.md`.
+3. Tools should live in the tool registry and scripts, not be embedded as ad hoc one-off logic inside multiple skills.
+4. Skills should link to knowledge and tools explicitly, so updating the KB or tool registry updates skill behavior through those links rather than through duplicated text.
+5. Reused horizontal logic should be extracted into utility skills before it is repeated across multiple execution or theory skills.
+
+## Standard Agent Flow
+1. Classify request type and required evidence level.
+2. Run `workflow-router` when skill/workflow selection is non-trivial or needs to be stated explicitly.
+3. Use the routing result to identify one `workflow_owner_skill`.
+4. If high-cost/high-risk, run `eda-theory-veto` before expensive execution inside the selected workflow.
+5. Invoke the selected workflow owner directly:
+- `eda-loop` only for one scoped execution workflow,
+- `eda-research-chain` for multi-stage research workflow,
+- utility owners such as `eda-infra-maintainer` or `eda-artifact-hygiene-maintainer` for maintenance workflows,
+- specialist/theory skills directly when no execution wrapper is needed.
+6. Use `eda-loop` only when it is the selected workflow owner or when another workflow owner explicitly delegates one governed execution stage to it.
+7. If batch/experiment completed, run `eda-retro` only when the active workflow needs post-experiment mechanism and next-step decision.
+8. Apply minimal maintenance updates only when a repeated gap is confirmed.
+
+## Mandatory Routing Disclosure
+
+When workflow or skill selection is performed, the agent must explicitly disclose the routing result to the user before or at the start of execution.
+
+Minimum disclosure fields:
+1. `Detected workflow`
+2. `Workflow owner`
+3. `Skills used`
+4. `New workflow decision = reuse_existing | create_new_workflow | no_new_workflow`
+
+If routing was trivial and `workflow-router` was not explicitly invoked, the agent must still disclose the effective workflow and selected skills whenever non-trivial work is about to proceed.
 
 ## Deployment Onboarding Contract
 For a newly deployed environment (or first interaction in a new repo), agent must do this before normal execution:
@@ -101,26 +76,19 @@ For a newly deployed environment (or first interaction in a new repo), agent mus
 4. Ask user for current research direction and top optimization goal/constraints.
 5. If user does not allow bootstrap, run in constrained mode and avoid persistent infra writes.
 
-Deployment trigger phrases (equivalent):
-1. `开始部署EDAgent`
-2. `Start deploying EDAgent`
-When either phrase is provided, start the onboarding contract immediately.
-
 ## Pre-Submit Hard Gate
 1. Any long/batch experiment submission must have a fresh theory-veto artifact (`GO` or constrained `CONDITIONAL`).
 2. `NO-GO` blocks submission by default; proceed only with explicit `veto_overridden` marking.
 
-## Full Research Chain Flow
-For end-to-end research requests, route by stages:
-1. `eda-knowledge-explorer` (knowledge and evidence gap map),
-2. `eda-paper-fetch` + `eda-pdf-local-summary` (literature queue and local parsing),
-3. `eda-idea-debate-lab` (brainstorm + pro/con debate),
-4. `eda-hypothesis-experiment-designer` (falsifiable experiment matrix),
-5. `eda-method-implementer` (implementation and validation handoff),
-6. `git-version-control` (multi-version checkpoints/integration),
-7. `eda-loop` + validation stack (execution and decision),
-8. `eda-retro` (post-run recursive decision).
-For explicit long-horizon PPA goals, use `bspdn-goal-driver` to enforce staged milestone gates.
+## Routing Policy
+`workflow-router` is the only skill that owns reusable workflow classification and skill-selection policy.
+
+Agent-level rule:
+1. `AGENTS.md` defines governance, not request-pattern matrices.
+2. `workflow-router` owns the canonical routing references, workflow-owner contract, and output format.
+3. Routing must identify one `workflow_owner_skill`; the owner is not implicitly `eda-loop`.
+4. `eda-loop` consumes a scoped execution brief; it does not own the repo routing matrix and is not the default wrapper for every workflow.
+5. No compatibility entry skill is required; routing policy lives directly in `workflow-router`.
 
 ## Early-Round Testcase Policy (BSPDN Goal)
 1. For early hypothesis rounds, prioritize `net-dense + small-scale` testcases to maximize information per wall-clock.
@@ -167,25 +135,35 @@ Every infrastructure interaction must leave:
 3. one skill-system audit artifact,
 4. explicit `risk + rollback trigger` note.
 
+## Mandatory Output Contract (Execution / Research Work)
+
+For any non-trivial execution, research, or maintenance interaction, the user-facing response should also include:
+1. detected workflow,
+2. workflow owner skill,
+3. selected skill set,
+4. whether a new workflow was needed.
+
 ## Skill Boundary Table
 | Skill | Owns | Does Not Own |
 |---|---|---|
-| `eda-loop` | Scoped execution orchestration (gate/tool query, routing, artifact validation) | Global entry policy, recursion governance, global self-update policy |
-| `eda-chief` | Legacy compatibility dispatch for historical calls | Primary agent role and top-level governance |
-| `eda-research-chain` | End-to-end research chain orchestration for idea-to-validation workflow | Global policy ownership |
+| `workflow-router` | Workflow classification, skill shortlist construction, and new-skill decision policy | Repo-wide governance, execution artifacts, domain implementation |
+| `eda-loop` | Scoped single-task execution ownership and delegated governed execution stages | Global entry policy, routing policy ownership, non-execution workflow ownership, recursion governance, global self-update policy |
+| `eda-research-chain` | End-to-end research-chain workflow ownership for idea-to-validation flow | Global policy ownership and generic single-task execution ownership |
 | `eda-knowledge-explorer` | Knowledge exploration and evidence-gap mapping | Method implementation and final validation claims |
 | `eda-idea-debate-lab` | Brainstorming and adversarial idea refinement | Experiment execution and production code changes |
 | `eda-hypothesis-experiment-designer` | Hypothesis-to-experiment design with pass/fail criteria | Running production implementation changes directly |
 | `eda-method-implementer` | Method implementation with integration contract and validation handoff | Final promotion decision without validation evidence |
 | `bspdn-goal-driver` | Staged optimization toward explicit PPA goals with milestone gating | One-shot final-goal claim without intermediate evidence |
 | `eda-infra-maintainer` | Infrastructure maintenance/development workflow for KB/tool/skills stack | Domain experiment logic and physics/model conclusions |
+| `eda-artifact-hygiene-maintainer` | KB/tool/log artifact cleanup, duplicate merge, stale archive/delete, and naming normalization | Governance policy ownership and domain conclusion changes |
 | `eda-knowledge-gate-maintainer` | Gate hygiene utility and maintenance logging | Task planning, cross-skill routing decisions |
 | Domain skills (`bscost-*`, `gt3-*`, `delay-*`, paper/pdf, slides) | Domain logic and artifacts | Repo-wide orchestration decisions |
 
 ## Consolidation Decision
-1. Agent duties formerly duplicated in `eda-chief` and `eda-loop` are moved here.
-2. `eda-loop` remains the primary execution orchestrator skill.
-3. `eda-chief` is retained as a compatibility shim for legacy prompts/workflows.
+1. Agent duties formerly duplicated in legacy entry shims and `eda-loop` are moved here.
+2. Skill-routing duties formerly duplicated across `AGENTS.md`, `eda-loop`, and compatibility docs are consolidated into `workflow-router`.
+3. `eda-loop` remains the primary owner for one scoped execution workflow, not the universal owner for all workflows.
+4. Legacy compatibility shim `eda-chief` has been removed from the active skill system.
 
 ## Change Policy
 1. Prefer updating specialized domain skills before orchestration skills.

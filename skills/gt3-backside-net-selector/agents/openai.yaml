@@ -1,0 +1,4 @@
+version: 1
+display_name: GT3 Backside Net Selector
+short_description: Select power-first backside candidate nets after placement/postCTS.
+default_prompt: Build a reusable backside candidate net list using power-first selection with timing-safety guards.

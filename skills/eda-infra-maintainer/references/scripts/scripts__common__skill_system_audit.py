@@ -7,7 +7,7 @@ import re
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 
 def parse_args() -> argparse.Namespace:
@@ -63,6 +63,32 @@ def file_exists_for_skill(root: Path, skill: str) -> Dict[str, bool]:
     }
 
 
+def reference_stats_for_skill(root: Path, skill: str) -> Tuple[int, int]:
+    refs_dir = root / skill / "references"
+    if not refs_dir.exists():
+        return 0, 0
+    ref_files = sorted(refs_dir.glob("*.md"))
+    long_ref_count = 0
+    for path in ref_files:
+        try:
+            line_count = sum(1 for _ in path.open("r", encoding="utf-8", errors="ignore"))
+        except OSError:
+            line_count = 0
+        if line_count > 200:
+            long_ref_count += 1
+    return len(ref_files), long_ref_count
+
+
+def skill_md_line_count(root: Path, skill: str) -> int:
+    skill_md = root / skill / "SKILL.md"
+    if not skill_md.exists():
+        return 0
+    try:
+        return sum(1 for _ in skill_md.open("r", encoding="utf-8", errors="ignore"))
+    except OSError:
+        return 0
+
+
 def main() -> int:
     args = parse_args()
     manifest_path = Path(args.manifest)
@@ -101,7 +127,7 @@ def main() -> int:
     agent_md_exists = agent_md_path.exists()
     entry_skills = [r["skill"] for r in rows if r.get("user_entry", "0").strip() == "1" and r.get("status", "") == "active"]
     entry_count_ok = len(entry_skills) <= 1
-    entry_name_ok = (len(entry_skills) == 0) or (entry_skills[0] == "eda-chief")
+    entry_name_ok = True
     entry_policy_ok = agent_md_exists and entry_count_ok and entry_name_ok
 
     # Dependency checks
@@ -132,8 +158,11 @@ def main() -> int:
 
     # Coverage checks
     fs_rows: List[Dict[str, str]] = []
+    ref_rows: List[Dict[str, str]] = []
     for r in rows:
         chk = file_exists_for_skill(skills_root, r["skill"])
+        ref_count, long_ref_count = reference_stats_for_skill(skills_root, r["skill"])
+        skill_lines = skill_md_line_count(skills_root, r["skill"])
         fs_rows.append(
             {
                 "skill": r["skill"],
@@ -142,6 +171,18 @@ def main() -> int:
                 "has_references_dir": "yes" if chk["refs_dir"] else "no",
             }
         )
+        ref_rows.append(
+            {
+                "skill": r["skill"],
+                "ref_md_count": str(ref_count),
+                "long_ref_count_gt_200_lines": str(long_ref_count),
+                "ref_count_status": "FAIL" if ref_count > 10 else "PASS",
+                "single_case_risk": "WARN" if long_ref_count > 0 else "OK",
+            }
+        )
+        heavy_skill_entry_risk = "WARN" if skill_lines > 80 and ref_count < 2 else "OK"
+        ref_rows[-1]["skill_md_lines"] = str(skill_lines)
+        ref_rows[-1]["heavy_skill_entry_risk"] = heavy_skill_entry_risk
 
     # Overlap detection: tags appearing in multiple active skills.
     tag_map: Dict[str, List[str]] = defaultdict(list)
@@ -253,6 +294,7 @@ def main() -> int:
     out_overlap = out_prefix.with_suffix(".overlap.tsv")
     out_gap = out_prefix.with_suffix(".gaps.tsv")
     out_fs = out_prefix.with_suffix(".fscheck.tsv")
+    out_ref = out_prefix.with_suffix(".refcheck.tsv")
     out_md = out_prefix.with_suffix(".summary.md")
 
     with out_overlap.open("w", encoding="utf-8", newline="") as f:
@@ -273,6 +315,24 @@ def main() -> int:
         for r in fs_rows:
             w.writerow(r)
 
+    with out_ref.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(
+            f,
+            fieldnames=[
+                "skill",
+                "ref_md_count",
+                "long_ref_count_gt_200_lines",
+                "ref_count_status",
+                "single_case_risk",
+                "skill_md_lines",
+                "heavy_skill_entry_risk",
+            ],
+            delimiter="\t",
+        )
+        w.writeheader()
+        for r in ref_rows:
+            w.writerow(r)
+
     ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     lines: List[str] = []
     lines.append("# Skill System Audit")
@@ -282,7 +342,7 @@ def main() -> int:
     lines.append(f"- agent_md: `{agent_md_path}`")
     lines.append(f"- agent_md_exists: `{'YES' if agent_md_exists else 'NO'}`")
     lines.append(f"- active_entry_skills: `{','.join(entry_skills) if entry_skills else 'none'}`")
-    lines.append("- entry_policy_rule: `AGENTS.md must exist; active entry skills <=1; if present, entry skill should be eda-chief (compat)`")
+    lines.append("- entry_policy_rule: `AGENTS.md must exist; active entry skills <=1; no compatibility entry skill is required`")
     lines.append(f"- entry_policy_ok: `{'YES' if entry_policy_ok else 'NO'}`")
     lines.append("")
     lines.append("## Dependency Check")
@@ -356,10 +416,22 @@ def main() -> int:
             f"| {r['skill']} | {r['has_skill_md']} | {r['has_openai_yaml']} | {r['has_references_dir']} |"
         )
     lines.append("")
+    lines.append("## Reference Topology Checks")
+    lines.append("- policy: `each reference markdown should target one concrete situation; reference markdown count should stay <= 10 per skill`")
+    lines.append("- heuristic: `documents > 200 lines are flagged as review-needed, not automatic violations`")
+    lines.append("- heuristic: `SKILL.md > 80 lines with fewer than 2 reference docs is flagged as entry-too-heavy`")
+    lines.append("| skill | SKILL.md lines | ref_md_count | >200_line_refs | count_status | single_case_risk | heavy_skill_entry_risk |")
+    lines.append("|---|---:|---:|---:|---|---|---|")
+    for r in ref_rows:
+        lines.append(
+            f"| {r['skill']} | {r['skill_md_lines']} | {r['ref_md_count']} | {r['long_ref_count_gt_200_lines']} | {r['ref_count_status']} | {r['single_case_risk']} | {r['heavy_skill_entry_risk']} |"
+        )
+    lines.append("")
     lines.append("## Artifacts")
     lines.append(f"- overlap_tsv: `{out_overlap}`")
     lines.append(f"- gaps_tsv: `{out_gap}`")
     lines.append(f"- fscheck_tsv: `{out_fs}`")
+    lines.append(f"- refcheck_tsv: `{out_ref}`")
     lines.append(f"- summary_md: `{out_md}`")
     out_md.write_text("\n".join(lines) + "\n", encoding="utf-8")
 

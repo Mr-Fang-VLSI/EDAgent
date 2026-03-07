@@ -139,6 +139,7 @@ Auto-generated from `scripts/` by `scripts/common/tool_catalog.py`.
 | `debug_run_replace_placement_ab_resource_gate_py` | active | 0.1.0 | place | `scripts/debug/run_replace_placement_ab_resource_gate.py` | run replace placement ab resource gate |
 | `debug_run_route_abc_from_cts_golden_sh` | active | 0.1.0 | cts | `scripts/debug/run_route_abc_from_cts_golden.sh` | run route abc from cts golden |
 | `debug_screen_backside_delay_power_balance_py` | active | 0.1.0 | utility | `scripts/debug/screen_backside_delay_power_balance.py` | screen backside delay power balance |
+| `debug_select_backside_nets_power_first_py` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_power_first.py` | select backside nets power first |
 | `debug_select_backside_nets_by_hot_congestion_py` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_by_hot_congestion.py` | select backside nets by hot congestion |
 | `debug_select_backside_nets_cpp_sh` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_cpp.sh` | select backside nets cpp |
 | `debug_select_backside_nets_version_a_py` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_version_a.py` | select backside nets version a |
@@ -237,4 +238,3 @@ Auto-generated from `scripts/` by `scripts/common/tool_catalog.py`.
 | `tech_prepare_gt3_fixed_sh` | active | 0.1.0 | utility | `scripts/tech/prepare_gt3_fixed.sh` | ============================================================ |
 | `tech_prepare_probe_gt3_sh` | active | 0.1.0 | utility | `scripts/tech/prepare_probe_gt3.sh` | Prepare a local PROBE GT3 tech bundle under tech/PROBE_GT3. |
 | `tech_probe_gt3_sh` | active | 0.1.0 | utility | `scripts/tech/probe_gt3.sh` | ============================================================ |
-

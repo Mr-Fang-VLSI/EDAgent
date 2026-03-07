@@ -1,4 +1,4 @@
 interface:
   display_name: "EDA Loop"
   short_description: "Scoped EDA execution orchestrator with gate discipline"
-  default_prompt: "Use this skill to execute one scoped EDA task: run gate/tool checks, route to minimal specialist skills, validate artifacts, and return evidence."
+  default_prompt: "Use this skill to execute one scoped EDA task with an already scoped execution brief: run gate/tool checks, validate artifacts, and return evidence."

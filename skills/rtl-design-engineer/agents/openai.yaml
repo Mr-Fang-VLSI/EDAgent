@@ -1,0 +1,4 @@
+version: 1
+display_name: RTL Design Engineer
+short_description: Build or trim synthesizable RTL into meaningful macro-free testcases.
+default_prompt: Design or package a clean, meaningful RTL block for synthesis and physical-design experiments.
