@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conda Project Environment Manager"
+  short_description: "Manage project conda env discovery and explicit env usage"
+  default_prompt: "Use this skill to manage project conda environments, generate env snapshots, check package availability, and standardize explicit conda-run usage for repo workflows."

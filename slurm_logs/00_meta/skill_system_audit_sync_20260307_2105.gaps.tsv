@@ -1,0 +1,4 @@
+gap	suggested_skill	priority	reason
+portfolio_planning	eda-portfolio-manager	high	No skill explicitly manages multi-batch prioritization/resource budgeting.
+result_warehouse	eda-results-regression	high	No dedicated skill for normalized experiment database/golden regression snapshots.
+visual_insight	eda-viz-insight	medium	No dedicated skill for standardized visual diagnostics and publication-ready plots.

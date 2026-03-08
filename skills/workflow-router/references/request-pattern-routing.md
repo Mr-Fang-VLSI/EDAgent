@@ -26,7 +26,7 @@ This is the canonical request-pattern to workflow-owner mapping for the repo.
 - If feedback says KB should change, follow with `eda-infra-maintainer`
 
 6. "实验前先做数据诊断 / 方法反思 / 生成下一步A-B-C建议"
-- Workflow owner: `eda-preflight-reflect`
+- Workflow owner: `control-preflight-reflect`
 - `eda_loop_role`: `not_used`
 
 7. "背部 signal/clock cost model 规划与联网分析 / HPWL 稳定性对比 / 多设计基准扩展"
@@ -37,12 +37,12 @@ This is the canonical request-pattern to workflow-owner mapping for the repo.
 - Workflow owner: `bscost-theory-opt`
 - `eda_loop_role`: `not_used`
 
-9. "实验后复盘 / 失败机理分类 / 是否递归下一轮 eda-loop 决策"
-- Workflow owner: `eda-retro`
+9. "实验后复盘 / 失败机理分类 / 是否递归下一轮 workflow-scoped-execution 决策"
+- Workflow owner: `control-postrun-retro`
 - `eda_loop_role`: `not_used`
 
 10. "从理论上判断提议是否不合理 / 是否应否决执行"
-- Workflow owner: `eda-theory-veto`
+- Workflow owner: `control-theory-veto`
 - `eda_loop_role`: `not_used`
 
 11. "新建或改造 skill"
@@ -64,17 +64,17 @@ This is the canonical request-pattern to workflow-owner mapping for the repo.
 - `eda_loop_role`: `not_used`
 
 16. "执行结果真假判定 / 防止假成功 / 路由结果契约化验收"
-- Workflow owner: `eda-loop`
+- Workflow owner: `workflow-scoped-execution`
 - delegated tool: `scripts/debug/validate_execution_contract.py`
 - `eda_loop_role`: `owner`
 
 17. "提交流程前检查 PDK/LEF/DEF/SDC 兼容性"
-- Workflow owner: `eda-loop`
+- Workflow owner: `workflow-scoped-execution`
 - delegated tool: `scripts/debug/pdk_flow_preflight.py`
 - `eda_loop_role`: `owner`
 
 18. "实验记忆库 / 约束下自动提案下一轮参数"
-- Workflow owner: `eda-loop`
+- Workflow owner: `workflow-scoped-execution`
 - delegated tools: `scripts/common/experiment_memory.py`, `scripts/debug/propose_constrained_experiments.py`
 - `eda_loop_role`: `owner`
 
@@ -89,12 +89,12 @@ This is the canonical request-pattern to workflow-owner mapping for the repo.
 - Follow with `eda-infra-maintainer` only if cleanup reveals a governance or structural policy problem
 
 21. "我要一整条科研闭环：知识探索->文献检索->解析->idea辩论->假设实验->实现->版本管理->验证"
-- Workflow owner: `eda-research-chain`
+- Workflow owner: `workflow-research-chain`
 - `eda_loop_role`: `delegated_stage` only for execution/validation stages inside the chain
 - Also run: `scripts/common/init_research_chain.py` and `scripts/common/research_chain_guard.py`
 
 22. "知识探索 / 证据缺口梳理 / 生成论文下载队列"
-- Workflow owner: `eda-knowledge-explorer`
+- Workflow owner: `control-knowledge-explorer`
 - `eda_loop_role`: `not_used`
 
 23. "新思路头脑风暴 / 正反方辩论打磨"
@@ -119,5 +119,34 @@ This is the canonical request-pattern to workflow-owner mapping for the repo.
 
 1. Prefer the minimal set.
 2. If uncertain, include `eda-knowledge-gate-maintainer` as baseline governance skill.
-3. Choose one `workflow_owner_skill` first; do not default to `eda-loop`.
-4. Keep execution tools under `eda-loop` only when `eda-loop` is the active workflow owner or a delegated execution stage.
+3. Choose one `workflow_owner_skill` first; do not default to `workflow-scoped-execution`.
+4. Keep execution tools under `workflow-scoped-execution` only when `workflow-scoped-execution` is the active workflow owner or a delegated execution stage.
+
+## Quick Routing Examples
+
+Use these to distinguish routing, owner selection, and execution orchestration:
+
+1. "just run this one batch"
+- router: `workflow-router`
+- workflow owner: `workflow-scoped-execution`
+- `workflow-scoped-execution` role: `owner`
+
+2. "do a whole research program"
+- router: `workflow-router`
+- workflow owner: `workflow-research-chain`
+- `workflow-scoped-execution` role: `delegated_stage` only if a bounded execution stage appears later
+
+3. "judge whether the plan is theoretically invalid"
+- router: `workflow-router`
+- workflow owner: `control-theory-veto`
+- `workflow-scoped-execution` role: `not_used`
+
+4. "maintain the KB/tool/skill stack"
+- router: `workflow-router`
+- workflow owner: `eda-infra-maintainer`
+- `workflow-scoped-execution` role: `not_used`
+
+5. "debug GT3 layer-policy assumptions and maybe run a confirming batch"
+- router: `workflow-router`
+- workflow owner: `gt3-backside-route-policy`
+- `workflow-scoped-execution` role: `delegated_stage` only if the policy skill decides a bounded execution run is needed

@@ -30,7 +30,7 @@ It does not own:
 ## Expected Downstream Consumers
 
 Typical consumers include:
-- `eda-loop` before and after substantive execution,
+- `workflow-scoped-execution` before and after substantive execution,
 - execution skills that submit jobs, create scripts, or write experiment artifacts,
 - `eda-infra-maintainer` when gate behavior itself needs repair.
 
@@ -65,7 +65,7 @@ Return or update:
 
 ## Operational References
 
-1. Load `references/invocation-scope.md` when deciding whether the call is routine `eda-loop` usage or direct gate-hygiene repair/debug.
+1. Load `references/invocation-scope.md` when deciding whether the call is routine `workflow-scoped-execution` usage or direct gate-hygiene repair/debug.
 2. Load `references/gate-run-and-tool-query.md` when running the gate command and tool-catalog query.
 3. Load `references/maintenance-log-writeback.md` when writing the maintenance-log row and artifact summary.
 4. Load `references/hard-failure-policy.md` when deciding whether the interaction must stop or escalate due to missing gate evidence.

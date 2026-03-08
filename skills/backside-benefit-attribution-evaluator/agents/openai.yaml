@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backside Benefit Attribution Evaluator"
+  short_description: "Judge whether backside benefit comes from clock-only backside use or from partial signal migration under a fair comparison contract"
+  default_prompt: "Use $backside-benefit-attribution-evaluator to compare front-only, CTS-backside-only, and partial-signal-backside under a fair contract and decide what actually caused the benefit."

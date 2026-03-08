@@ -8,7 +8,7 @@ Once the workflow is chosen:
 3. select the smallest set that covers the next bounded step,
 4. avoid invoking broad orchestrators when a specialist skill is enough,
 5. keep execution routing separate from tool implementation,
-6. do not wrap utility or theory workflows in `eda-loop` unless a bounded governed execution stage is explicitly needed.
+6. do not wrap utility or theory workflows in `workflow-scoped-execution` unless a bounded governed execution stage is explicitly needed.
 
 ## New Skill Decision Rule
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backside Routing Realization Specialist"
+  short_description: "Diagnose and implement real backside-route realization, including OpenROAD/OpenDB-backed local rerouter bring-up"
+  default_prompt: "Use $backside-routing-realization-specialist to diagnose why backside-targeted nets are not realizing BM2/BM1 occupancy and to build a stable local rerouter or patch path."

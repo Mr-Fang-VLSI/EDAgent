@@ -37,19 +37,53 @@ Design rules:
 4. Skills should link to knowledge and tools explicitly, so updating the KB or tool registry updates skill behavior through those links rather than through duplicated text.
 5. Reused horizontal logic should be extracted into utility skills before it is repeated across multiple execution or theory skills.
 
+## Skill Naming And Grouping Principle
+1. A skill should be identifiable from its name by both:
+- primary function,
+- and approximate architectural level or family.
+2. Preferred naming signal:
+- workflow/control-plane owners: names such as `workflow-*`, `workflow-scoped-execution`, `workflow-research-chain`, or equivalent clearly owner-like forms,
+- utility/horizontal skills: names such as `eda-*-maintainer`, `eda-*-curator`, `eda-*-accessor`, `git-*`,
+- domain/specialist skills: names such as `gt3-*`, `bscost-*`, `delay-*`, `rtl-*`, `academic-*`.
+3. If flat naming stops being sufficiently discriminative, the system should introduce category subfolders rather than keep adding ambiguous peer directories.
+4. New skills should therefore satisfy at least one of:
+- the name alone clearly signals function and level,
+- or the skill is placed under a category grouping that supplies the missing level/function context.
+5. Do not add new skills with generic names that require reading the body to understand whether they are workflow owners, utilities, or domain specialists.
+
+## Workflow Owner Stability Principle
+1. Skills that serve as `workflow_owner_skill` are part of the middle control plane and should remain relatively stable.
+2. When new functionality is needed, prefer implementing it by:
+- updating lower-layer specialist skills,
+- adding or refining utility skills,
+- or extending reusable tools/scripts,
+before changing the workflow-owner skill itself.
+3. Change a workflow-owner skill directly only when:
+- its orchestration contract is genuinely wrong,
+- its owner/delegate boundary is incorrect,
+- or the user-visible workflow semantics must change.
+4. Do not use workflow-owner skills as the default place to accumulate new domain logic, parsing logic, or one-off execution detail.
+5. Adoption monitoring must treat materially revised workflow-owner skills as high-priority review targets because instability at this layer affects many downstream tasks.
+
 ## Standard Agent Flow
 1. Classify request type and required evidence level.
 2. Run `workflow-router` when skill/workflow selection is non-trivial or needs to be stated explicitly.
 3. Use the routing result to identify one `workflow_owner_skill`.
-4. If high-cost/high-risk, run `eda-theory-veto` before expensive execution inside the selected workflow.
-5. Invoke the selected workflow owner directly:
-- `eda-loop` only for one scoped execution workflow,
-- `eda-research-chain` for multi-stage research workflow,
+4. If high-cost/high-risk, run `control-theory-veto` before expensive execution inside the selected workflow.
+5. If a batch/experiment finished and reusable empirical knowledge should be lifted from logs, run `eda-experiment-phenomenology-analyst` before retrospective or future veto use.
+6. Invoke the selected workflow owner directly:
+- `workflow-scoped-execution` only for one scoped execution workflow,
+- `workflow-research-chain` for multi-stage research workflow,
 - utility owners such as `eda-infra-maintainer` or `eda-artifact-hygiene-maintainer` for maintenance workflows,
 - specialist/theory skills directly when no execution wrapper is needed.
-6. Use `eda-loop` only when it is the selected workflow owner or when another workflow owner explicitly delegates one governed execution stage to it.
-7. If batch/experiment completed, run `eda-retro` only when the active workflow needs post-experiment mechanism and next-step decision.
-8. Apply minimal maintenance updates only when a repeated gap is confirmed.
+7. Use `workflow-scoped-execution` only when it is the selected workflow owner or when another workflow owner explicitly delegates one governed execution stage to it.
+8. If batch/experiment completed, run `control-postrun-retro` only when the active workflow needs post-experiment mechanism and next-step decision.
+9. Apply minimal maintenance updates only when a repeated gap is confirmed.
+
+## Theory-Practice Coupling Rule
+1. Theory-oriented skills must not rely only on papers, formulas, or KB policy when relevant local experiment evidence already exists.
+2. When local runs have produced reusable `result/conclusion/experience` artifacts, theory-oriented skills should consume them through `eda-experiment-phenomenology-analyst` or downstream artifacts that preserve that layer split.
+3. If theory and repeated experiment experience conflict, the contradiction must be surfaced explicitly and treated as a gating input rather than ignored.
 
 ## Mandatory Routing Disclosure
 
@@ -86,8 +120,8 @@ For a newly deployed environment (or first interaction in a new repo), agent mus
 Agent-level rule:
 1. `AGENTS.md` defines governance, not request-pattern matrices.
 2. `workflow-router` owns the canonical routing references, workflow-owner contract, and output format.
-3. Routing must identify one `workflow_owner_skill`; the owner is not implicitly `eda-loop`.
-4. `eda-loop` consumes a scoped execution brief; it does not own the repo routing matrix and is not the default wrapper for every workflow.
+3. Routing must identify one `workflow_owner_skill`; the owner is not implicitly `workflow-scoped-execution`.
+4. `workflow-scoped-execution` consumes a scoped execution brief; it does not own the repo routing matrix and is not the default wrapper for every workflow.
 5. No compatibility entry skill is required; routing policy lives directly in `workflow-router`.
 
 ## Early-Round Testcase Policy (BSPDN Goal)
@@ -147,25 +181,27 @@ For any non-trivial execution, research, or maintenance interaction, the user-fa
 | Skill | Owns | Does Not Own |
 |---|---|---|
 | `workflow-router` | Workflow classification, skill shortlist construction, and new-skill decision policy | Repo-wide governance, execution artifacts, domain implementation |
-| `eda-loop` | Scoped single-task execution ownership and delegated governed execution stages | Global entry policy, routing policy ownership, non-execution workflow ownership, recursion governance, global self-update policy |
-| `eda-research-chain` | End-to-end research-chain workflow ownership for idea-to-validation flow | Global policy ownership and generic single-task execution ownership |
-| `eda-knowledge-explorer` | Knowledge exploration and evidence-gap mapping | Method implementation and final validation claims |
+| `workflow-scoped-execution` | Scoped single-task execution ownership and delegated governed execution stages | Global entry policy, routing policy ownership, non-execution workflow ownership, recursion governance, global self-update policy |
+| `workflow-research-chain` | End-to-end research-chain workflow ownership for idea-to-validation flow | Global policy ownership and generic single-task execution ownership |
+| `control-knowledge-explorer` | Knowledge exploration and evidence-gap mapping | Method implementation and final validation claims |
 | `eda-idea-debate-lab` | Brainstorming and adversarial idea refinement | Experiment execution and production code changes |
 | `eda-hypothesis-experiment-designer` | Hypothesis-to-experiment design with pass/fail criteria | Running production implementation changes directly |
 | `eda-method-implementer` | Method implementation with integration contract and validation handoff | Final promotion decision without validation evidence |
 | `bspdn-goal-driver` | Staged optimization toward explicit PPA goals with milestone gating | One-shot final-goal claim without intermediate evidence |
 | `eda-infra-maintainer` | Infrastructure maintenance/development workflow for KB/tool/skills stack | Domain experiment logic and physics/model conclusions |
+| `eda-experiment-phenomenology-analyst` | Horizontal extraction and maintenance of `log -> result -> conclusion -> experience` evidence layers for experiment workflows | Final veto ownership, global routing ownership, or replacement of `control-postrun-retro` decision logic |
+| `eda-script-pattern-curator` | Horizontal maintenance of reusable script-writing patterns, wrapper/runtime lessons, abstraction triggers, and script-level anti-patterns | Replacing tool catalog ownership, owning domain conclusions, or bypassing infra/tool governance |
 | `eda-artifact-hygiene-maintainer` | KB/tool/log artifact cleanup, duplicate merge, stale archive/delete, and naming normalization | Governance policy ownership and domain conclusion changes |
 | `eda-knowledge-gate-maintainer` | Gate hygiene utility and maintenance logging | Task planning, cross-skill routing decisions |
 | Domain skills (`bscost-*`, `gt3-*`, `delay-*`, paper/pdf, slides) | Domain logic and artifacts | Repo-wide orchestration decisions |
 
 ## Consolidation Decision
-1. Agent duties formerly duplicated in legacy entry shims and `eda-loop` are moved here.
-2. Skill-routing duties formerly duplicated across `AGENTS.md`, `eda-loop`, and compatibility docs are consolidated into `workflow-router`.
-3. `eda-loop` remains the primary owner for one scoped execution workflow, not the universal owner for all workflows.
+1. Agent duties formerly duplicated in legacy entry shims and `workflow-scoped-execution` are moved here.
+2. Skill-routing duties formerly duplicated across `AGENTS.md`, `workflow-scoped-execution`, and compatibility docs are consolidated into `workflow-router`.
+3. `workflow-scoped-execution` remains the primary owner for one scoped execution workflow, not the universal owner for all workflows.
 4. Legacy compatibility shim `eda-chief` has been removed from the active skill system.
 
 ## Change Policy
 1. Prefer updating specialized domain skills before orchestration skills.
-2. Update `eda-loop` only for repeated execution-level gaps.
+2. Update `workflow-scoped-execution` only for repeated execution-level gaps.
 3. Update this `AGENTS.md` when governance/routing policy changes.

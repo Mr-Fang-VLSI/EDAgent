@@ -9,7 +9,7 @@ description: "Standardize workflow classification and skill selection before exe
 
 This skill is the canonical routing owner for the agent+skill system.
 
-The agent still owns repo-wide governance and user communication, but reusable routing policy must live here rather than in `AGENTS.md`, `eda-loop`, or compatibility shims.
+The agent still owns repo-wide governance and user communication, but reusable routing policy must live here rather than in `AGENTS.md`, `workflow-scoped-execution`, or compatibility shims.
 
 ## Use This Skill When
 
@@ -57,10 +57,15 @@ The system should evolve like this:
 - skills provide bounded expertise,
 - and new skills are added only when boundary and professionalism justify them.
 
+For workflow-owner skills specifically:
+- keep owner skills stable as control-plane nodes,
+- prefer capability growth in lower-layer specialist or utility skills,
+- and escalate owner-skill edits only when orchestration semantics or owner/delegate boundaries must change.
+
 ## Operational References
 
 1. Load `references/workflow-classification.md` when you need to decide whether the task fits a known workflow or requires a temporary workflow.
-2. Load `references/workflow-owner-contract.md` when deciding which skill should own orchestration and whether `eda-loop` is owner, delegated stage, or unused.
-3. Load `references/skill-selection-and-new-skill-decision.md` when choosing the minimal skill subset or deciding whether to reuse, defer, or create a new skill.
-4. Load `references/request-pattern-routing.md` when the request can be matched by pattern and you need the canonical request-to-workflow-owner mapping.
+2. Load `references/workflow-owner-contract.md` when deciding which skill should own orchestration and whether `workflow-scoped-execution` is owner, delegated stage, or unused.
+3. Load `references/request-pattern-routing.md` when the request can be matched by pattern and you need the canonical request-to-workflow-owner mapping plus quick routing examples.
+4. Load `references/skill-selection-and-new-skill-decision.md` when choosing the minimal skill subset or deciding whether to reuse, defer, or create a new skill.
 5. Load `references/routing-disclosure-format.md` when surfacing the routing decision to the user.

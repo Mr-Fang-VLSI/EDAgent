@@ -12,16 +12,16 @@ Create a reproducible end-to-end research chain for EDA work:
 8. validation and final decision.
 
 ## Core skill chain
-1. `eda-research-chain` (overall chain orchestration)
-2. `eda-knowledge-explorer` (knowledge gap mapping)
+1. `workflow-research-chain` (overall chain orchestration)
+2. `control-knowledge-explorer` (knowledge gap mapping)
 3. `eda-paper-fetch` (paper candidate queue for local download)
 4. `eda-pdf-local-summary` (local PDF parsing and summary)
 5. `eda-idea-debate-lab` (brainstorm + structured debate)
 6. `eda-hypothesis-experiment-designer` (falsifiable experiment matrix)
 7. `eda-method-implementer` (implementation from approved hypothesis)
 8. `git-version-control` (multi-version checkpoints and integration records)
-9. `eda-loop` + validation tools/skills (execution + contract checks)
-10. `eda-retro` (post-run mechanism and next-step decision)
+9. `workflow-scoped-execution` + validation tools/skills (execution + contract checks)
+10. `control-postrun-retro` (post-run mechanism and next-step decision)
 11. `bspdn-goal-driver` (goal milestone tracking and campaign gating)
 
 ## Workspace initialization

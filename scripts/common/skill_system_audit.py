@@ -239,7 +239,7 @@ def main() -> int:
         gap_hints.append(
             {
                 "gap": "knowledge_exploration",
-                "suggested_skill": "eda-knowledge-explorer",
+                "suggested_skill": "control-knowledge-explorer",
                 "priority": "high",
                 "reason": "No dedicated skill maps knowledge/evidence gaps before literature and experiment planning.",
             }
@@ -275,7 +275,7 @@ def main() -> int:
         gap_hints.append(
             {
                 "gap": "research_chain",
-                "suggested_skill": "eda-research-chain",
+                "suggested_skill": "workflow-research-chain",
                 "priority": "high",
                 "reason": "No end-to-end workflow skill coordinates knowledge-to-validation chain.",
             }

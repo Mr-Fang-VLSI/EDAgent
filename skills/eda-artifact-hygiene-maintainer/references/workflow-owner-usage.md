@@ -17,10 +17,10 @@ Treat cleanup as a delegated substage only when:
 2. an execution or research workflow needs post-run artifact normalization,
 3. the parent workflow still owns the overall objective while hygiene is only one bounded step.
 
-## `eda-loop` Rule
+## `workflow-scoped-execution` Rule
 
-`eda-loop` is normally `not_used` for cleanup.
-Use `eda-loop` only if a larger execution workflow delegates a governed stage that happens to include cleanup, not as the default owner for hygiene work.
+`workflow-scoped-execution` is normally `not_used` for cleanup.
+Use `workflow-scoped-execution` only if a larger execution workflow delegates a governed stage that happens to include cleanup, not as the default owner for hygiene work.
 
 ## Reporting Requirement
 

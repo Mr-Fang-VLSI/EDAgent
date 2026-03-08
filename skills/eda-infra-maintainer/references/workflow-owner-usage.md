@@ -10,9 +10,9 @@ Use this reference when deciding whether `eda-infra-maintainer` should remain th
 3. KB/tool-registry governance maintenance,
 4. guard/audit-driven integrity repair.
 
-## Delegate To `eda-loop` Only When
+## Delegate To `workflow-scoped-execution` Only When
 
-Delegate one bounded stage to `eda-loop` only if the infrastructure task includes governed execution such as:
+Delegate one bounded stage to `workflow-scoped-execution` only if the infrastructure task includes governed execution such as:
 1. submitting a validation run,
 2. producing monitored execution artifacts for a repaired flow,
 3. running a scoped execution contract after infra changes.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Script Pattern Curator"
+  short_description: "Maintain reusable script-writing patterns and anti-patterns"
+  default_prompt: "Use $eda-script-pattern-curator to capture reusable script-writing lessons, wrapper/runtime patterns, and anti-patterns before adding or refactoring EDA scripts."

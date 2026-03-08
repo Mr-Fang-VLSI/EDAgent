@@ -29,7 +29,7 @@ It does not own:
 - repo-wide governance policy.
 
 This skill is the direct workflow owner for cleanup and normalization tasks.
-`eda-loop` is not the default wrapper here; use it only when cleanup is embedded inside a larger execution workflow that explicitly delegates one bounded stage.
+`workflow-scoped-execution` is not the default wrapper here; use it only when cleanup is embedded inside a larger execution workflow that explicitly delegates one bounded stage.
 
 ## Expected Downstream Consumers
 
@@ -60,7 +60,7 @@ Return or update:
 - optional rename map (`artifact_rename_map.tsv`),
 - optional duplicate-merge note,
 - explicit keep/delete/archive rationale for touched artifacts,
-- explicit statement of whether `eda-loop` was `not_used` or the cleanup was a delegated stage inside another workflow.
+- explicit statement of whether `workflow-scoped-execution` was `not_used` or the cleanup was a delegated stage inside another workflow.
 
 ## Hard Rules
 
@@ -68,7 +68,7 @@ Return or update:
 2. Prefer rename or archive over silent deletion when traceability matters.
 3. Do not rewrite domain conclusions while performing hygiene-only work.
 4. If cleanup exposes a governance problem rather than simple artifact hygiene, hand off to `eda-infra-maintainer`.
-5. Do not route routine cleanup through `eda-loop` unless the parent workflow explicitly requires a governed execution substage.
+5. Do not route routine cleanup through `workflow-scoped-execution` unless the parent workflow explicitly requires a governed execution substage.
 
 ## Operational References
 

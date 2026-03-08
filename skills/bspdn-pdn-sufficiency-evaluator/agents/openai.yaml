@@ -1,0 +1,5 @@
+interface:
+  display_name: "BSPDN PDN Sufficiency Evaluator"
+  short_description: "Judge whether the current BPR-centered PDN contract is strong enough without conflating it with signal-mixing"
+  default_prompt: "Use $bspdn-pdn-sufficiency-evaluator to evaluate Strict-BPR vs PDN-boost style evidence and decide whether PDN strength, not signal mixing, is the bottleneck."
+

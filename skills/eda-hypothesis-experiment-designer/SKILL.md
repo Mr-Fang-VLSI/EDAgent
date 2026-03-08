@@ -13,7 +13,8 @@ Use this skill after idea selection and before method implementation or expensiv
 
 1. If the task needs shared KB or tool lookup before formalizing hypotheses, delegate that step to `eda-context-accessor`.
 2. Use idea memos, KB context, and prior evidence artifacts as the basis for falsifiable hypothesis design instead of inventing hypotheses from scratch.
-3. Write experiment-design outputs so downstream implementation and validation skills can consume them directly.
+3. When related local experiments already exist, use `eda-experiment-phenomenology-analyst` artifacts so hypothesis design reflects repeated practical evidence rather than only theoretical intuition.
+4. Write experiment-design outputs so downstream implementation and validation skills can consume them directly.
 
 ## Outputs
 

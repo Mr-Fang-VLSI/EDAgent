@@ -13,7 +13,7 @@ python3 scripts/debug/track_bspdn_goal_progress.py --campaign-md <ppa_md> --out-
 
 ## Pre-submit Checks
 
-- `eda-preflight-reflect`
+- `control-preflight-reflect`
 - route smoke (`smoke_targeted_backside_route_toycase.sh`) for targeted net lists
 - execution policy lock (`vanilla_replace` primary baseline)
 

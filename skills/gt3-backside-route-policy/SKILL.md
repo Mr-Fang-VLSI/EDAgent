@@ -12,6 +12,8 @@ Apply this policy for GT3 experiments unless the task brief explicitly overrides
 2. Keep PDN on high layers (`BSPDN_HI` => `M6/M7`).
 3. Reserve `BPR` for PDN.
 4. Allow backside signal routing on `BM2/BM1` only (`index 1..2`).
+5. Treat `BM2 -> BM1 -> M0 -> M1` as the current working signal-entry hypothesis until disproved by a topology-validity gate.
+6. Do not assume direct `BM1 -> M1` connectivity without explicit tool or techlef evidence.
 
 ## Submit controlled run
 
@@ -34,5 +36,6 @@ Monitor outputs:
 1. Verify backside signal occupancy appears on BM layers.
 2. Verify signal occupancy does not use BPR.
 3. Verify CTS remains on `M4/M5` window.
+4. Verify the run does not rely on an unproven shortcut such as direct `BM1-M1`.
 
 Load `references/policy_checks.md` for quick command snippets.

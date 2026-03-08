@@ -15,7 +15,8 @@ This skill must stay grounded in:
 - `docs/knowledge_base/84_REPLACE_COMPARISON_POLICY_20260304.md`
 - relevant backside judgment KB notes when applicable.
 2. Paper-derived evidence already summarized into local notes or paper-summary artifacts.
-3. Scoped retrieval from `eda-context-accessor` when the task needs refreshed KB or paper context before fitting or promotion judgment.
+3. Experiment-experience artifacts from `eda-experiment-phenomenology-analyst` when related local runs already exposed reusable results, conclusions, or repeated failure patterns.
+4. Scoped retrieval from `eda-context-accessor` when the task needs refreshed KB or paper context before fitting or promotion judgment.
 
 If current empirical evidence contradicts the linked background knowledge:
 - keep the contradiction explicit,

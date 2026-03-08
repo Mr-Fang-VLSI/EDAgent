@@ -39,7 +39,7 @@ If critical checks fail, block promotion/claim and fix baseline first.
 
 ## Skill ownership
 1. global policy owner: `AGENTS.md`
-2. scoped execution orchestrator: `eda-loop`
+2. scoped execution orchestrator: `workflow-scoped-execution`
 3. infrastructure maintenance owner: `eda-infra-maintainer`
 4. gate hygiene utility: `eda-knowledge-gate-maintainer`
 5. workflow-routing helper: `workflow-router` (helper only; final routing ownership stays with agent)
@@ -53,6 +53,8 @@ For maintain/develop interactions, agent must explicitly decide:
 
 Temporary workflows are required when no existing workflow is a clean fit.
 New skills are justified when reusable specialist logic would otherwise bloat orchestration skills.
+Reusable script-writing lessons should also become a dedicated horizontal capability when they start recurring across wrappers, parsers, validators, or helper scripts instead of being left in scattered commit notes.
+Long append-only maintenance logs should be periodically rolled up into dense summary/principle notes instead of being treated as the only durable memory layer.
 
 ## Development line vs release mirror
 The current repo is the development authority.
@@ -86,6 +88,9 @@ When infrastructure work changes routing, workflow ownership, skill boundaries, 
 2. define a later validation window,
 3. define what evidence would show the new structure did not help,
 4. review that decision after enough real usage instead of treating the refactor itself as proof.
+5. for newly introduced skills, add or update a row in the skill-adoption ledger so later maintenance can evaluate whether the skill actually entered use.
+6. for materially revised skills, add a `major_revised` adoption row as well, so later maintenance can evaluate whether the refactor improved real usage instead of merely changing structure.
+7. if the touched skill is a workflow owner, first prefer pushing the requested capability into lower-layer specialist/utility skills or tools unless the owner contract itself is what must change.
 
 ## Output contract for infrastructure interactions
 1. changed file list,
@@ -93,3 +98,4 @@ When infrastructure work changes routing, workflow ownership, skill boundaries, 
 3. skill-system audit artifact path,
 4. residual risk + rollback trigger,
 5. architecture-change validation plan when the change is structural rather than a narrow bug fix.
+6. if a long raw log triggered the work, one rollup artifact or an explicit reason for skipping it.

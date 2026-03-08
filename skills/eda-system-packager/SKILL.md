@@ -25,7 +25,7 @@ It does not own:
 - skill-routing policy,
 - publication hosting decisions beyond packaging output.
 
-`eda-loop` is not the default wrapper here. Use it only if a larger maintenance workflow explicitly delegates one bounded execution stage that must produce a package artifact.
+`workflow-scoped-execution` is not the default wrapper here. Use it only if a larger maintenance workflow explicitly delegates one bounded execution stage that must produce a package artifact.
 
 ## Expected Downstream Consumers
 
@@ -47,7 +47,7 @@ Provide or derive:
 Return or update:
 - standalone package directory,
 - packaging summary with mirrored content scope,
-- explicit statement of whether `eda-loop` was `not_used` or the packaging step was delegated from another workflow.
+- explicit statement of whether `workflow-scoped-execution` was `not_used` or the packaging step was delegated from another workflow.
 
 ## Knowledge And Tool Interaction
 
@@ -59,7 +59,7 @@ Return or update:
 
 1. Do not claim a package is canonical unless the bundle was rebuilt from current repo state.
 2. Do not silently omit required governance or core KB/tool artifacts from a supposedly standalone package.
-3. Do not use `eda-loop` as the default owner for packaging work.
+3. Do not use `workflow-scoped-execution` as the default owner for packaging work.
 
 ## Operational References
 

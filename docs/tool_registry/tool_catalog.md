@@ -11,8 +11,8 @@ Auto-generated from `scripts/` by `scripts/common/tool_catalog.py`.
 
 | type | count |
 |---|---:|
-| common_utility | 18 |
-| debug_tool | 117 |
+| common_utility | 22 |
+| debug_tool | 122 |
 | flow_orchestrator | 2 |
 | flow_stage | 6 |
 | flow_stage_aux | 14 |
@@ -27,17 +27,21 @@ Auto-generated from `scripts/` by `scripts/common/tool_catalog.py`.
 | `common_adjust_clock_period_py` | active | 0.1.0 | cts | `scripts/common/adjust_clock_period.py` | adjust clock period |
 | `autoidea_bridge` | active | 1.0.0 | analysis | `scripts/common/autoidea_bridge.py` | Bridge autoIdea recommendations and idea drafts into local queues/knowledge artifacts |
 | `build_agent_skill_bundle` | active | 1.0.0 | analysis | `scripts/common/build_agent_skill_bundle.py` | Export standalone agent+skill bundle with skill-local mirrored scripts |
+| `common_check_design_package_py` | active | 0.1.0 | utility | `scripts/common/check_design_package.py` | check design package |
 | `common_cleanup_sh` | active | 0.1.0 | utility | `scripts/common/cleanup.sh` | ============================================================ |
 | `common_derive_innovus_tuning_py` | active | 0.1.0 | utility | `scripts/common/derive_innovus_tuning.py` | derive innovus tuning |
 | `common_experiment_memory_py` | active | 0.1.0 | utility | `scripts/common/experiment_memory.py` | experiment memory |
 | `infra_stack_guard` | active | 1.0.0 | preflight | `scripts/common/infra_stack_guard.py` | Audit core infrastructure integrity: agent policy, KB, tool registry, and skills |
 | `common_init_research_chain_py` | active | 0.1.0 | utility | `scripts/common/init_research_chain.py` | init research chain |
 | `common_knowledge_gate_sh` | active | 0.1.0 | utility | `scripts/common/knowledge_gate.sh` | knowledge gate |
+| `maintenance_log_rollup` | active | 1.0.0 | analysis | `scripts/common/maintenance_log_rollup.py` | Summarize long markdown maintenance logs into denser rollup notes with candidate experience entries and principles |
 | `paper_kb_index` | active | 1.0.0 | analysis | `scripts/common/paper_kb_index.py` | Build/query paper evidence index with keyword/semantic/logic modes |
 | `paper_landscape_feedback` | active | 1.0.0 | analysis | `scripts/common/paper_landscape_feedback.py` | Detect literature gaps/stale methods and generate targeted retrieval queue |
 | `paper_landscape_sync` | active | 1.0.0 | analysis | `scripts/common/paper_landscape_sync.py` | Sync problem/method landscapes from local paper summaries into linked KB artifacts |
 | `common_prepare_innovus_sdc_py` | active | 0.1.0 | utility | `scripts/common/prepare_innovus_sdc.py` | Commands where the first numeric positional argument is a time value. |
 | `common_research_chain_guard_py` | active | 0.1.0 | utility | `scripts/common/research_chain_guard.py` | research chain guard |
+| `common_sbatch_cpu_research_sh` | active | 0.1.0 | utility | `scripts/common/sbatch_cpu_research.sh` | sbatch cpu research |
+| `common_skill_adoption_monitor_py` | active | 0.1.0 | analysis | `scripts/common/skill_adoption_monitor.py` | skill adoption monitor |
 | `common_skill_system_audit_py` | active | 0.1.0 | utility | `scripts/common/skill_system_audit.py` | skill system audit |
 | `common_sync_repo_skills_to_codex_home_sh` | active | 0.1.0 | utility | `scripts/common/sync_repo_skills_to_codex_home.sh` | sync repo skills to codex home |
 | `tool_catalog` | active | 1.1.0 | analysis | `scripts/common/tool_catalog.py` | Build/query governed tool catalog with lifecycle/version facets |
@@ -102,6 +106,9 @@ Auto-generated from `scripts/` by `scripts/common/tool_catalog.py`.
 | `debug_generate_bspdn_goal_campaign_py` | active | 0.1.0 | utility | `scripts/debug/generate_bspdn_goal_campaign.py` | generate bspdn goal campaign |
 | `debug_generate_testcase_first_campaign_py` | active | 0.1.0 | utility | `scripts/debug/generate_testcase_first_campaign.py` | Few directions with high mechanism information gain. |
 | `debug_gt3_backside_hypothesis_eval_sh` | active | 0.1.0 | utility | `scripts/debug/gt3_backside_hypothesis_eval.sh` | Evaluate hypothesis on PROBE GT3-like setup: |
+| `debug_gt3_legalizer_lib_py` | active | 0.1.0 | utility | `scripts/debug/gt3_legalizer_lib.py` | gt3 legalizer lib |
+| `debug_gt3_prects_legality_scorecard_py` | active | 0.1.0 | cts | `scripts/debug/gt3_prects_legality_scorecard.py` | gt3 prects legality scorecard |
+| `debug_gt3_prects_legalizer_py` | active | 0.1.0 | cts | `scripts/debug/gt3_prects_legalizer.py` | gt3 prects legalizer |
 | `debug_gt3_rc_completion_probe_sh` | active | 0.1.0 | utility | `scripts/debug/gt3_rc_completion_probe.sh` | GT3 RC-completion probe matrix. |
 | `debug_launch_testcase_first_chipbench_campaign_py` | active | 0.1.0 | utility | `scripts/debug/launch_testcase_first_chipbench_campaign.py` | launch testcase first chipbench campaign |
 | `debug_lc_compile_lib_to_db_sh` | active | 0.1.0 | utility | `scripts/debug/lc_compile_lib_to_db.sh` | Compile Liberty .lib into Synopsys .db using lc_shell on Slurm nodes. |
@@ -109,6 +116,7 @@ Auto-generated from `scripts/` by `scripts/common/tool_catalog.py`.
 | `debug_offline_rc_consistency_regression_py` | active | 0.1.0 | utility | `scripts/debug/offline_rc_consistency_regression.py` | offline rc consistency regression |
 | `debug_one_click_validate_new_cases_sh` | active | 0.1.0 | utility | `scripts/debug/one_click_validate_new_cases.sh` | One-click validation for new external RTL cases. |
 | `debug_openroad_cts_bridge_baseline_all_cases_sh` | active | 0.1.0 | cts | `scripts/debug/openroad_cts_bridge_baseline_all_cases.sh` | Batch submit OpenROAD-CTS bridge baselines across multiple designs. |
+| `debug_patch_def_from_bookshelf_pl_py` | active | 0.1.0 | utility | `scripts/debug/patch_def_from_bookshelf_pl.py` | patch def from bookshelf pl |
 | `debug_pdk_flow_preflight_py` | active | 0.1.0 | preflight | `scripts/debug/pdk_flow_preflight.py` | pdk flow preflight |
 | `debug_plot_backside_compare_py` | active | 0.1.0 | utility | `scripts/debug/plot_backside_compare.py` | plot backside compare |
 | `debug_plot_net_cost_model_consistency_py` | active | 0.1.0 | utility | `scripts/debug/plot_net_cost_model_consistency.py` | plot net cost model consistency |
@@ -139,9 +147,9 @@ Auto-generated from `scripts/` by `scripts/common/tool_catalog.py`.
 | `debug_run_replace_placement_ab_resource_gate_py` | active | 0.1.0 | place | `scripts/debug/run_replace_placement_ab_resource_gate.py` | run replace placement ab resource gate |
 | `debug_run_route_abc_from_cts_golden_sh` | active | 0.1.0 | cts | `scripts/debug/run_route_abc_from_cts_golden.sh` | run route abc from cts golden |
 | `debug_screen_backside_delay_power_balance_py` | active | 0.1.0 | utility | `scripts/debug/screen_backside_delay_power_balance.py` | screen backside delay power balance |
-| `debug_select_backside_nets_power_first_py` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_power_first.py` | select backside nets power first |
 | `debug_select_backside_nets_by_hot_congestion_py` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_by_hot_congestion.py` | select backside nets by hot congestion |
 | `debug_select_backside_nets_cpp_sh` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_cpp.sh` | select backside nets cpp |
+| `debug_select_backside_nets_power_first_py` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_power_first.py` | select backside nets power first |
 | `debug_select_backside_nets_version_a_py` | active | 0.1.0 | utility | `scripts/debug/select_backside_nets_version_a.py` | select backside nets version a |
 | `debug_select_hotspot_sink_subset_py` | active | 0.1.0 | utility | `scripts/debug/select_hotspot_sink_subset.py` | select hotspot sink subset |
 | `debug_smoke_targeted_backside_route_toycase_sh` | active | 0.1.0 | route | `scripts/debug/smoke_targeted_backside_route_toycase.sh` | smoke targeted backside route toycase |
@@ -238,3 +246,4 @@ Auto-generated from `scripts/` by `scripts/common/tool_catalog.py`.
 | `tech_prepare_gt3_fixed_sh` | active | 0.1.0 | utility | `scripts/tech/prepare_gt3_fixed.sh` | ============================================================ |
 | `tech_prepare_probe_gt3_sh` | active | 0.1.0 | utility | `scripts/tech/prepare_probe_gt3.sh` | Prepare a local PROBE GT3 tech bundle under tech/PROBE_GT3. |
 | `tech_probe_gt3_sh` | active | 0.1.0 | utility | `scripts/tech/probe_gt3.sh` | ============================================================ |
+

@@ -12,14 +12,14 @@ Use this reference when deciding whether `git-version-control` is the direct wor
 ## Delegated Context
 
 Treat versioning as a delegated substage when:
-1. `eda-research-chain` reaches a versioned development milestone,
+1. `workflow-research-chain` reaches a versioned development milestone,
 2. `eda-method-implementer` requests a checkpoint after a bounded implementation step,
 3. an execution workflow explicitly needs a reproducible rollback point after completion.
 
-## `eda-loop` Rule
+## `workflow-scoped-execution` Rule
 
-`eda-loop` is normally `not_used` for versioning.
-Use `eda-loop` only if the parent workflow has a governed execution stage and versioning is the closeout of that delegated stage.
+`workflow-scoped-execution` is normally `not_used` for versioning.
+Use `workflow-scoped-execution` only if the parent workflow has a governed execution stage and versioning is the closeout of that delegated stage.
 
 ## Reporting Requirement
 

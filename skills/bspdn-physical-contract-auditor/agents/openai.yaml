@@ -1,0 +1,5 @@
+interface:
+  display_name: "BSPDN Physical Contract Auditor"
+  short_description: "Audit whether the local BSPDN physical/topological contract is coherent enough for mechanism claims"
+  default_prompt: "Use $bspdn-physical-contract-auditor to reconcile paper assumptions, GT3 collateral, and local flow topology before promotion or expensive attribution runs."
+

@@ -18,7 +18,7 @@ This skill does **not** own:
 - CTS/route submission,
 - final PPA claims.
 
-Those remain in `gt3-backside-route-policy` and `eda-loop`.
+Those remain in `gt3-backside-route-policy` and `workflow-scoped-execution`.
 
 ## Use This Skill When
 

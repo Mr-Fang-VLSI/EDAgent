@@ -4,6 +4,20 @@
 
 Provide stable type boundaries and construction patterns for the skill system so new skills and maintenance work follow a consistent architecture.
 
+## Naming And Layout Policy
+
+Skill discovery should not require opening every `SKILL.md`.
+
+Default rule in the current flat `skills/` layout:
+1. the directory name must signal both function and approximate level/family,
+2. names should cluster by prefix or suffix so related skills are visually grouped,
+3. if a new skill cannot be named clearly under this rule, prefer introducing category subfolders over adding another ambiguous top-level peer.
+
+Practical interpretation:
+1. workflow/control-plane skills should look owner-like or routing-like,
+2. utility skills should look maintainer/curator/accessor/packager/versioning-like,
+3. domain skills should carry domain prefixes such as `gt3`, `bscost`, `delay`, `rtl`, `academic`.
+
 ## Core Separation Principle
 
 Keep these independent:
@@ -19,7 +33,7 @@ Skills should connect to knowledge and tools through explicit links, not by dupl
 
 Examples:
 - `bscost-theory-opt`
-- `eda-theory-veto`
+- `control-theory-veto`
 
 Pattern:
 - own theory judgment or model reasoning,
@@ -31,7 +45,7 @@ Pattern:
 ### 2. Execution skills
 
 Examples:
-- `eda-loop`
+- `workflow-scoped-execution`
 - `gt3-backside-route-policy`
 - `gt3-backside-net-selector`
 - `bspdn-goal-driver`

@@ -23,6 +23,7 @@ Mark all items before submission:
 - [ ] If `A_algorithmic` + downstream Innovus validation: lock route policy identical across variants (default `--open-backside-route` for both).
 - [ ] Monitor path is defined.
 - [ ] Manifest path is defined.
+- [ ] Monitor file is created at submission time, not deferred.
 - [ ] Job IDs will be reported to the user immediately after submission.
 - [ ] If ETA will be reported, its estimation basis is defined.
 - [ ] Stop criteria are defined.
@@ -31,6 +32,11 @@ Mark all items before submission:
 - Prefer one controller script per experiment family.
 - Keep run tags unique and descriptive.
 - Use immutable tech staging for concurrent jobs whenever possible.
+- Every experiment submission must create a canonical monitor artifact at submit time.
+- Prefer the reusable monitor stack instead of hand-written monitor markdown:
+  - `python3.11 scripts/debug/progress_monitor.py --manifest <manifest.tsv> --out-prefix <monitor_prefix>`
+  - or `bash scripts/debug/progress_monitor.sh start --manifest <manifest.tsv> --out-prefix <monitor_prefix> --exit-when-complete`
+- The same turn that reports job submission must also report the monitor file path to the user.
 - Manual Slurm submissions must use canonical CPU defaults unless there is a documented reason not to:
   - partition: `cpu-research`
   - qos: `olympus-cpu-research`
@@ -39,6 +45,10 @@ Mark all items before submission:
 - Do not mix "force routing" and "open routing" in the same conclusion batch.
 - If new script is needed, record why existing catalog entries are insufficient.
 - For route/cts submissions, generate unified preflight report first (`pdk_flow_preflight.py`) and block on FAIL.
+- For new BSPDN layer-role or topology claims, complete a topology-validity gate first:
+  - produce `hypothesis_experiment_matrix.tsv`, `experiment_design_note.md`, and `promotion_gate.md`,
+  - make the current `BPR / BM1 / BM2 / M0 / M1 / nTSV` assumptions explicit,
+  - block large comparison batches if the topology gate is `NO-GO`.
 - For testcase-backed DC/Innovus submissions, block on testcase package check FAIL:
 
 ```bash
@@ -63,6 +73,19 @@ Each batch summary must include:
   - experiment setup,
   - measured outcome,
   - conclusion (supported / partially supported / rejected).
+
+When the batch exposed reusable behavior, also lift evidence through four explicit layers:
+1. `log`: raw stdout/stderr/reports/monitor/manifest
+2. `result`: structured extracted facts (`WNS/TNS/PPA/runtime/backside usage/gate status`)
+3. `conclusion`: batch-local mechanism judgment
+4. `experience`: cross-batch reusable recommendation or veto-relevant pattern
+
+Do not skip directly from raw logs to durable advice without writing at least `result` and `conclusion`.
+
+Default skeletons:
+- `docs/knowledge_base/templates/experiment_results_template.tsv`
+- `docs/knowledge_base/templates/experiment_conclusion_template.md`
+- `docs/knowledge_base/templates/experiment_experience_delta_template.md`
 
 ## Convergence root-cause protocol
 Use this when CTS/route convergence is unstable or runtime is being wasted by repeated legality churn.
@@ -109,3 +132,4 @@ Unless the user explicitly requests release promotion, such principle-driven cha
 - If internet evidence was required but missing, the conclusion must be marked `evidence-incomplete`.
 - If claim class is `A_algorithmic` and primary baseline is not `vanilla_replace`, conclusion must be marked `INVALID_COMPARISON_POLICY`.
 - For research-chain conclusions, run `research_chain_guard.py`; if any critical stage artifact is missing, conclusion must be marked `CHAIN_INCOMPLETE`.
+- If a later theory-veto or retrospective relies on repeated empirical experience, the cited experience item must link back to concrete `result` and `conclusion` artifacts rather than only free-form narrative.

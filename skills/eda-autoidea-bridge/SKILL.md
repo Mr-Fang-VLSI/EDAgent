@@ -33,4 +33,4 @@ python3 scripts/common/autoidea_bridge.py --autoidea-root external_tools/autoIde
 ## Integration contract
 1. New autoIdea-driven queue rows must still pass current paper/validation gates.
 2. Imported idea/experiment drafts are treated as candidates, not accepted plans.
-3. Promotion requires `eda-theory-veto` and non-regression execution evidence.
+3. Promotion requires `control-theory-veto` and non-regression execution evidence.

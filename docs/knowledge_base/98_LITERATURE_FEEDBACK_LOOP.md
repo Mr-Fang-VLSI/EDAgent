@@ -1,6 +1,6 @@
 # Literature Feedback Loop (Auto-Synced)
 
-- timestamp: `2026-03-06 11:44:16`
+- timestamp: `2026-03-07 16:38:09`
 - source_global_landscape: `docs/knowledge_base/index/global_research_landscape.tsv`
 - papers_scanned: `15`
 - stale_threshold: `latest_year <= 2023`

@@ -1,0 +1,192 @@
+scope	item	level	status	detail
+agent_policy	AGENTS.md	critical	PASS	file exists
+knowledge_base	docs/knowledge_base/README.md	critical	PASS	file exists
+knowledge_base	docs/knowledge_base/00_START_HERE.md	critical	PASS	file exists
+knowledge_base	docs/knowledge_base/10_TASK_EXECUTION_PROTOCOL.md	critical	PASS	file exists
+knowledge_base	docs/knowledge_base/11_INTERACTION_CHECKLIST.md	critical	PASS	file exists
+knowledge_base	docs/knowledge_base/90_HYPOTHESIS_VALIDATION_LOG.md	critical	PASS	file exists
+knowledge_base	docs/knowledge_base/93_EDA_RESEARCH_FULL_CHAIN_20260306.md	critical	PASS	file exists
+tool_registry	docs/tool_registry/README.md	critical	PASS	file exists
+tool_registry	docs/tool_registry/tool_catalog.tsv	critical	PASS	file exists
+tool_registry	docs/tool_registry/tool_catalog.md	critical	PASS	file exists
+tool_registry	docs/tool_registry/tool_metadata.tsv	critical	PASS	file exists
+tool_registry	scripts/common/tool_catalog.py	critical	PASS	file exists
+tool_registry	scripts/common/unified_kb_query.py	critical	PASS	file exists
+skill_system	skills/00_SKILL_SYSTEM_MANIFEST.tsv	critical	PASS	file exists
+skill_system	skills/academic-presentation-crafter/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/academic-presentation-crafter/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	academic-presentation-crafter -> academic-slide-refiner	info	PASS	dependency target exists
+skill_system	skills/academic-slide-refiner/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/academic-slide-refiner/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	skills/backside-benefit-attribution-evaluator/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/backside-benefit-attribution-evaluator/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	backside-benefit-attribution-evaluator -> bspdn-physical-contract-auditor	info	PASS	dependency target exists
+skill_system	backside-benefit-attribution-evaluator -> bspdn-pdn-sufficiency-evaluator	info	PASS	dependency target exists
+skill_system	backside-benefit-attribution-evaluator -> eda-experiment-phenomenology-analyst	info	PASS	dependency target exists
+skill_system	backside-benefit-attribution-evaluator -> workflow-scoped-execution	info	PASS	dependency target exists
+skill_system	skills/backside-routing-realization-specialist/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/backside-routing-realization-specialist/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	backside-routing-realization-specialist -> gt3-backside-route-policy	info	PASS	dependency target exists
+skill_system	backside-routing-realization-specialist -> bspdn-physical-contract-auditor	info	PASS	dependency target exists
+skill_system	backside-routing-realization-specialist -> eda-method-implementer	info	PASS	dependency target exists
+skill_system	backside-routing-realization-specialist -> workflow-scoped-execution	info	PASS	dependency target exists
+skill_system	skills/eda-artifact-hygiene-maintainer/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-artifact-hygiene-maintainer/agents/openai.yaml	warning	WARN	ui metadata missing
+skill_system	eda-artifact-hygiene-maintainer -> eda-context-accessor	info	PASS	dependency target exists
+skill_system	eda-artifact-hygiene-maintainer -> eda-infra-maintainer	info	PASS	dependency target exists
+skill_system	skills/bscost-net/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/bscost-net/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	bscost-net -> bscost-theory-opt	info	PASS	dependency target exists
+skill_system	bscost-net -> delay-model-gate-evaluator	info	PASS	dependency target exists
+skill_system	skills/bscost-theory-opt/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/bscost-theory-opt/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	bscost-theory-opt -> delay-model-gate-evaluator	info	PASS	dependency target exists
+skill_system	bscost-theory-opt -> eda-experiment-phenomenology-analyst	info	PASS	dependency target exists
+skill_system	skills/bspdn-pdn-sufficiency-evaluator/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/bspdn-pdn-sufficiency-evaluator/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	bspdn-pdn-sufficiency-evaluator -> bspdn-physical-contract-auditor	info	PASS	dependency target exists
+skill_system	bspdn-pdn-sufficiency-evaluator -> gt3-backside-route-policy	info	PASS	dependency target exists
+skill_system	bspdn-pdn-sufficiency-evaluator -> control-theory-veto	info	PASS	dependency target exists
+skill_system	bspdn-pdn-sufficiency-evaluator -> workflow-scoped-execution	info	PASS	dependency target exists
+skill_system	skills/bspdn-physical-contract-auditor/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/bspdn-physical-contract-auditor/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	bspdn-physical-contract-auditor -> control-knowledge-explorer	info	PASS	dependency target exists
+skill_system	bspdn-physical-contract-auditor -> eda-paper-fetch	info	PASS	dependency target exists
+skill_system	bspdn-physical-contract-auditor -> eda-pdf-local-summary	info	PASS	dependency target exists
+skill_system	bspdn-physical-contract-auditor -> gt3-backside-route-policy	info	PASS	dependency target exists
+skill_system	skills/bspdn-goal-driver/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/bspdn-goal-driver/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	bspdn-goal-driver -> control-preflight-reflect	info	PASS	dependency target exists
+skill_system	bspdn-goal-driver -> delay-model-gate-evaluator	info	PASS	dependency target exists
+skill_system	bspdn-goal-driver -> gt3-backside-route-policy	info	PASS	dependency target exists
+skill_system	bspdn-goal-driver -> git-version-control	info	PASS	dependency target exists
+skill_system	skills/delay-model-gate-evaluator/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/delay-model-gate-evaluator/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	delay-model-gate-evaluator -> bscost-theory-opt	info	PASS	dependency target exists
+skill_system	skills/eda-context-accessor/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-context-accessor/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-context-accessor -> control-knowledge-explorer	info	PASS	dependency target exists
+skill_system	eda-context-accessor -> eda-infra-maintainer	info	PASS	dependency target exists
+skill_system	skills/eda-autoidea-bridge/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-autoidea-bridge/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-autoidea-bridge -> eda-paper-fetch	info	PASS	dependency target exists
+skill_system	eda-autoidea-bridge -> eda-idea-debate-lab	info	PASS	dependency target exists
+skill_system	eda-autoidea-bridge -> eda-hypothesis-experiment-designer	info	PASS	dependency target exists
+skill_system	skills/eda-experiment-phenomenology-analyst/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-experiment-phenomenology-analyst/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-experiment-phenomenology-analyst -> workflow-scoped-execution	info	PASS	dependency target exists
+skill_system	eda-experiment-phenomenology-analyst -> control-postrun-retro	info	PASS	dependency target exists
+skill_system	eda-experiment-phenomenology-analyst -> control-theory-veto	info	PASS	dependency target exists
+skill_system	eda-experiment-phenomenology-analyst -> workflow-research-chain	info	PASS	dependency target exists
+skill_system	skills/eda-script-pattern-curator/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-script-pattern-curator/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-script-pattern-curator -> eda-infra-maintainer	info	PASS	dependency target exists
+skill_system	eda-script-pattern-curator -> eda-method-implementer	info	PASS	dependency target exists
+skill_system	eda-script-pattern-curator -> workflow-scoped-execution	info	PASS	dependency target exists
+skill_system	eda-script-pattern-curator -> eda-context-accessor	info	PASS	dependency target exists
+skill_system	skills/eda-hypothesis-experiment-designer/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-hypothesis-experiment-designer/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-hypothesis-experiment-designer -> control-preflight-reflect	info	PASS	dependency target exists
+skill_system	eda-hypothesis-experiment-designer -> control-theory-veto	info	PASS	dependency target exists
+skill_system	eda-hypothesis-experiment-designer -> eda-experiment-phenomenology-analyst	info	PASS	dependency target exists
+skill_system	skills/eda-idea-debate-lab/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-idea-debate-lab/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-idea-debate-lab -> eda-hypothesis-experiment-designer	info	PASS	dependency target exists
+skill_system	skills/eda-infra-maintainer/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-infra-maintainer/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-infra-maintainer -> eda-knowledge-gate-maintainer	info	PASS	dependency target exists
+skill_system	eda-infra-maintainer -> eda-script-pattern-curator	info	PASS	dependency target exists
+skill_system	skills/control-knowledge-explorer/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/control-knowledge-explorer/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	control-knowledge-explorer -> eda-paper-fetch	info	PASS	dependency target exists
+skill_system	control-knowledge-explorer -> eda-pdf-local-summary	info	PASS	dependency target exists
+skill_system	skills/eda-knowledge-gate-maintainer/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-knowledge-gate-maintainer/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	skills/workflow-scoped-execution/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/workflow-scoped-execution/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	workflow-scoped-execution -> bspdn-goal-driver	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> workflow-research-chain	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> control-knowledge-explorer	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-idea-debate-lab	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-hypothesis-experiment-designer	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-method-implementer	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-infra-maintainer	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> control-preflight-reflect	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> control-postrun-retro	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-knowledge-gate-maintainer	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-experiment-phenomenology-analyst	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> bscost-net	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> bscost-theory-opt	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> delay-model-gate-evaluator	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> gt3-backside-route-policy	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-stage-checkpoint-golden	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-paper-fetch	info	PASS	dependency target exists
+skill_system	workflow-scoped-execution -> eda-pdf-local-summary	info	PASS	dependency target exists
+skill_system	skills/eda-method-implementer/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-method-implementer/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-method-implementer -> git-version-control	info	PASS	dependency target exists
+skill_system	eda-method-implementer -> delay-model-gate-evaluator	info	PASS	dependency target exists
+skill_system	skills/eda-paper-fetch/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-paper-fetch/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-paper-fetch -> eda-pdf-local-summary	info	PASS	dependency target exists
+skill_system	skills/eda-pdf-local-summary/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-pdf-local-summary/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	skills/control-preflight-reflect/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/control-preflight-reflect/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	control-preflight-reflect -> bscost-net	info	PASS	dependency target exists
+skill_system	control-preflight-reflect -> bscost-theory-opt	info	PASS	dependency target exists
+skill_system	control-preflight-reflect -> eda-experiment-phenomenology-analyst	info	PASS	dependency target exists
+skill_system	skills/workflow-research-chain/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/workflow-research-chain/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	workflow-research-chain -> control-knowledge-explorer	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> eda-paper-fetch	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> eda-pdf-local-summary	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> eda-idea-debate-lab	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> eda-hypothesis-experiment-designer	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> eda-method-implementer	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> git-version-control	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> delay-model-gate-evaluator	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> eda-experiment-phenomenology-analyst	info	PASS	dependency target exists
+skill_system	workflow-research-chain -> control-postrun-retro	info	PASS	dependency target exists
+skill_system	skills/control-postrun-retro/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/control-postrun-retro/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	control-postrun-retro -> workflow-scoped-execution	info	PASS	dependency target exists
+skill_system	control-postrun-retro -> eda-experiment-phenomenology-analyst	info	PASS	dependency target exists
+skill_system	skills/conda-project-environment-manager/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/conda-project-environment-manager/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	conda-project-environment-manager -> eda-infra-maintainer	info	PASS	dependency target exists
+skill_system	conda-project-environment-manager -> eda-method-implementer	info	PASS	dependency target exists
+skill_system	skills/eda-stage-checkpoint-golden/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-stage-checkpoint-golden/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	skills/eda-system-packager/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/eda-system-packager/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	eda-system-packager -> eda-infra-maintainer	info	PASS	dependency target exists
+skill_system	eda-system-packager -> git-version-control	info	PASS	dependency target exists
+skill_system	skills/control-theory-veto/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/control-theory-veto/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	control-theory-veto -> workflow-scoped-execution	info	PASS	dependency target exists
+skill_system	control-theory-veto -> eda-experiment-phenomenology-analyst	info	PASS	dependency target exists
+skill_system	control-theory-veto -> bscost-theory-opt	info	PASS	dependency target exists
+skill_system	control-theory-veto -> delay-model-gate-evaluator	info	PASS	dependency target exists
+skill_system	skills/git-version-control/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/git-version-control/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	skills/gt3-backside-route-policy/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/gt3-backside-route-policy/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	gt3-backside-route-policy -> eda-stage-checkpoint-golden	info	PASS	dependency target exists
+skill_system	skills/rtl-design-engineer/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/rtl-design-engineer/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	rtl-design-engineer -> eda-method-implementer	info	PASS	dependency target exists
+skill_system	rtl-design-engineer -> git-version-control	info	PASS	dependency target exists
+skill_system	skills/workflow-router/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/workflow-router/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	workflow-router -> eda-infra-maintainer	info	PASS	dependency target exists
+skill_system	workflow-router -> workflow-scoped-execution	info	PASS	dependency target exists
+skill_system	skills/gt3-backside-net-selector/SKILL.md	critical	PASS	skill body exists
+skill_system	skills/gt3-backside-net-selector/agents/openai.yaml	warning	PASS	ui metadata exists
+skill_system	gt3-backside-net-selector -> gt3-backside-route-policy	info	PASS	dependency target exists
+skill_system	gt3-backside-net-selector -> workflow-scoped-execution	info	PASS	dependency target exists
+guard_stack	scripts/common/knowledge_gate.sh	critical	PASS	file exists
+guard_stack	scripts/common/skill_system_audit.py	critical	PASS	file exists
+guard_stack	scripts/common/infra_stack_guard.py	critical	PASS	file exists
+guard_stack	scripts/common/init_research_chain.py	critical	PASS	file exists
+guard_stack	scripts/common/research_chain_guard.py	critical	PASS	file exists

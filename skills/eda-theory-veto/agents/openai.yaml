@@ -1,4 +1,0 @@
-interface:
-  display_name: "EDA Theory Veto"
-  short_description: "Theory-based proposal veto and risk blocking"
-  default_prompt: "Use $eda-theory-veto to evaluate whether my proposed experiment or flow change is theoretically unsound and should be vetoed before execution."

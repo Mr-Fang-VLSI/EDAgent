@@ -70,10 +70,30 @@ If this is skipped, the run is considered non-baseline and should not be used as
 - `101_CTS_CONVERGENCE_ROOTCAUSE_SOP_20260306.md`: mandatory root-cause workflow for diagnosing CTS/route non-convergence before changing optimization knobs.
 - `102_DEVELOPMENT_PROMOTION_AND_PRINCIPLE_CAPTURE_SOP_20260307.md`: development-authority vs release-mirror policy, plus the rule that user-stated durable principles must be persisted into KB/protocol/SOP.
 - `103_SKILL_SYSTEM_UPGRADE_RETRO_AND_VALIDATION_PLAN_20260307.md`: retrospective for the recent skill-system upgrade, including expected benefits, falsification signals, and a later validation plan.
+- `104_EXPERIMENT_EXPERIENCE_LAYER_AND_PHENOMENOLOGY_WORKFLOW_20260307.md`: horizontal `log -> result -> conclusion -> experience` extraction model and how execution, retro, and theory-veto consume it.
+- `105_SCRIPT_PATTERN_MEMORY_AND_CURATION_WORKFLOW_20260307.md`: horizontal script-writing experience model for wrapper/runtime/abstraction lessons and when to promote them into reusable guidance.
+- `106_SKILL_ADOPTION_MONITORING_WORKFLOW_20260307.md`: monitor whether newly introduced skills actually enter use and help maintainability over time.
+- `107_BSPDN_TOPOLOGY_AND_BENEFIT_VALIDATION_PROGRAM_20260307.md`: mechanism-first validation program linking PDK topology audit, PDN sufficiency, benefit attribution, and later backside-aware placement promotion.
+- `108_LONG_LOG_ROLLUP_AND_PRINCIPLE_EXTRACTION_WORKFLOW_20260307.md`: periodic compression workflow for turning long append-only maintenance logs into dense experience/principle rollups.
+- `109_SKILL_NAMING_AND_GROUPING_POLICY_20260307.md`: policy for making skill names or directory placement reveal both function and architectural level/family.
+- `110_CURRENT_AGENT_SKILL_STRUCTURE_REPORT_20260307.md`: structural snapshot of the current skill system after the middle-layer rename cleanup, including layer counts, dependency shape, strengths, and pressure points.
+- `111_ROUTING_ORCHESTRATION_OWNER_CONTRACT_20260307.md`: canonical short contract that separates routing, workflow ownership, and bounded execution orchestration.
+- `112_PAPER_LEARNING_AND_EXPERT_REFRESH_FLOW_20260307.md`: canonical flow for unified paper nomination, human download queues, summary ingestion, learning-round synthesis, research-guidance closeout, and expert-skill refresh.
+- `113_BACKSIDE_ROUTING_REALIZATION_EXPERT_WORKFLOW_20260307.md`: expert workflow boundary for backside route realization, local rerouter bring-up, and the bridge from theory-ranked nets to physically realized `BM1/BM2` routing.
+- `114_CONDA_PROJECT_ENVIRONMENT_MANAGEMENT_WORKFLOW_20260307.md`: canonical project-level conda environment management contract for env discovery, package availability checks, and explicit `conda run -n ...` usage.
+- `107_BSPDN_TOPOLOGY_AND_BENEFIT_VALIDATION_PROGRAM_20260307.md`: now also names the preferred expert skills for topology validity, PDN sufficiency, and benefit attribution gates.
 - `templates/task_brief_template.md`: copy this to create a run brief before execution.
 - `templates/research_chain_task_brief_template.md`: task-brief template for full-chain research.
 - `templates/idea_debate_note_template.md`: standardized brainstorm/debate note format.
 - `templates/hypothesis_experiment_matrix_template.tsv`: hypothesis-to-experiment matrix template.
+- `templates/experiment_results_template.tsv`: default structured results skeleton for experiment phenomenology extraction.
+- `templates/experiment_conclusion_template.md`: default batch-local mechanism conclusion skeleton.
+- `templates/experiment_experience_delta_template.md`: default reusable experiment-experience delta skeleton.
+- `templates/script_incident_template.md`: default script incident capture skeleton.
+- `templates/script_pattern_note_template.md`: default reusable script pattern / anti-pattern note skeleton.
+- `templates/maintenance_log_rollup_template.md`: default dense rollup skeleton for long append-only logs.
+- `templates/paper_learning_round_synthesis_template.md`: default dense synthesis skeleton for one completed learning round.
+- `templates/paper_learning_next_step_guidance_template.md`: default bridge note from learning-round results to concrete next-step research guidance.
 
 ## Relation to Existing Docs
 This folder does not replace topic docs in:

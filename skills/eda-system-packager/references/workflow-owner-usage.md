@@ -16,7 +16,7 @@ Treat packaging as a delegated substage when:
 2. a larger maintenance workflow requires a portable handoff artifact,
 3. packaging is only one bounded step under a broader infrastructure objective.
 
-## `eda-loop` Rule
+## `workflow-scoped-execution` Rule
 
-`eda-loop` is normally `not_used` for packaging.
+`workflow-scoped-execution` is normally `not_used` for packaging.
 Use it only if a parent workflow explicitly delegates one governed execution stage that must emit a package artifact.

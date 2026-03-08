@@ -13,7 +13,7 @@ This skill owns RTL-level work:
 - enforcing synthesizability and macro-free testcase constraints,
 - and handing off a clean testcase package to synthesis / P&R flow.
 
-This skill does **not** own final P&R conclusions. After testcase packaging, execution returns to `eda-loop` or stage flows.
+This skill does **not** own final P&R conclusions. After testcase packaging, execution returns to `workflow-scoped-execution` or stage flows.
 
 ## Use This Skill When
 

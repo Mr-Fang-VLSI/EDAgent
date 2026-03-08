@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Experiment Phenomenology Analyst"
+  short_description: "Lift experiment logs into reusable result, conclusion, and experience layers"
+  default_prompt: "Use $eda-experiment-phenomenology-analyst to extract reusable evidence from completed experiment logs and produce result, conclusion, and experience-layer artifacts for later retro or theory-veto use."

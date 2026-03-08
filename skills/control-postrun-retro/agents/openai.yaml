@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Retro"
+  short_description: "Post-experiment reflection & recursive next-step gating"
+  default_prompt: "Use $control-postrun-retro to review the latest experiment, propose high-confidence next steps, and decide whether to recursively run $workflow-scoped-execution."

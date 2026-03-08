@@ -4,7 +4,7 @@ Use this reference when deciding how `eda-knowledge-gate-maintainer` should be i
 
 ## Preferred Path
 
-1. Prefer invocation through `eda-loop` for routine scoped execution.
+1. Prefer invocation through `workflow-scoped-execution` for routine scoped execution.
 2. Use direct invocation only for gate-hygiene repair, debugging, or policy validation.
 
 ## Scope Requirement

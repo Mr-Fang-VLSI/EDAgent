@@ -22,13 +22,13 @@ It does not own:
 - artifact cleanup policy,
 - execution orchestration outside the versioning task itself.
 
-`eda-loop` is not the default wrapper here. Use it only if a larger workflow delegates one bounded execution stage that must end in a git snapshot.
+`workflow-scoped-execution` is not the default wrapper here. Use it only if a larger workflow delegates one bounded execution stage that must end in a git snapshot.
 
 ## Expected Downstream Consumers
 
 Typical consumers include:
 - `eda-method-implementer` after implementation milestones,
-- `eda-research-chain` during versioned development stages,
+- `workflow-research-chain` during versioned development stages,
 - execution skills that need an explicit rollback point after a governed run.
 
 ## Inputs
@@ -45,7 +45,7 @@ Return or update:
 - commit/tag or checkpoint identity,
 - version-log entry under `docs/versioning/` or equivalent topic log,
 - explicit baseline and differentiator record,
-- explicit statement of whether `eda-loop` was `not_used` or the versioning step was delegated from another workflow.
+- explicit statement of whether `workflow-scoped-execution` was `not_used` or the versioning step was delegated from another workflow.
 
 ## Knowledge And Tool Interaction
 
@@ -59,7 +59,7 @@ Return or update:
 2. Avoid touching unrelated dirty files.
 3. Never use destructive reset/checkout unless user explicitly requests.
 4. Every version artifact must be traceable through git metadata plus a human-readable log entry.
-5. Do not route routine versioning work through `eda-loop` unless the parent workflow explicitly delegates a bounded execution stage that ends in version capture.
+5. Do not route routine versioning work through `workflow-scoped-execution` unless the parent workflow explicitly delegates a bounded execution stage that ends in version capture.
 
 ## Operational References
 
