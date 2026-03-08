@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Unified local retrieval for knowledge-base docs and paper evidence index."""
 
-from __future__ import annotations
-
 import argparse
 import csv
 import json

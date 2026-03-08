@@ -1,6 +1,6 @@
 # Skill System Audit
 
-- timestamp: `2026-03-07 21:04:52`
+- timestamp: `2026-03-07 21:25:59`
 - manifest: `skills/00_SKILL_SYSTEM_MANIFEST.tsv`
 - agent_md: `AGENTS.md`
 - agent_md_exists: `YES`
@@ -16,13 +16,8 @@
 
 ## Tool Dependency Path Check
 - tool_catalog: `docs/tool_registry/tool_catalog.tsv`
-- known_tool_id_count: `187`
-- status: `FAIL`
-```text
-backside-routing-realization-specialist -> scripts_debug_openroad_backside_rerouter_py
-backside-routing-realization-specialist -> scripts_debug_sanitize_def_for_openroad_py
-conda-project-environment-manager -> conda_project_env_report
-```
+- known_tool_id_count: `198`
+- status: `PASS`
 
 ## Tool Dependency Format Check
 - status: `PASS`
@@ -46,7 +41,7 @@ conda-project-environment-manager -> conda_project_env_report
 | academic-slide-refiner | yes | yes | yes |
 | backside-benefit-attribution-evaluator | yes | yes | yes |
 | backside-routing-realization-specialist | yes | yes | yes |
-| eda-artifact-hygiene-maintainer | yes | no | yes |
+| eda-artifact-hygiene-maintainer | yes | yes | yes |
 | bscost-net | yes | yes | yes |
 | bscost-theory-opt | yes | yes | yes |
 | bspdn-pdn-sufficiency-evaluator | yes | yes | yes |
@@ -123,8 +118,8 @@ conda-project-environment-manager -> conda_project_env_report
 | gt3-backside-net-selector | 58 | 2 | 0 | PASS | OK | OK |
 
 ## Artifacts
-- overlap_tsv: `slurm_logs/00_meta/skill_system_audit_sync_20260307_2105.overlap.tsv`
-- gaps_tsv: `slurm_logs/00_meta/skill_system_audit_sync_20260307_2105.gaps.tsv`
-- fscheck_tsv: `slurm_logs/00_meta/skill_system_audit_sync_20260307_2105.fscheck.tsv`
-- refcheck_tsv: `slurm_logs/00_meta/skill_system_audit_sync_20260307_2105.refcheck.tsv`
-- summary_md: `slurm_logs/00_meta/skill_system_audit_sync_20260307_2105.summary.md`
+- overlap_tsv: `slurm_logs/00_meta/skill_system_audit_openbox_20260307_2128.overlap.tsv`
+- gaps_tsv: `slurm_logs/00_meta/skill_system_audit_openbox_20260307_2128.gaps.tsv`
+- fscheck_tsv: `slurm_logs/00_meta/skill_system_audit_openbox_20260307_2128.fscheck.tsv`
+- refcheck_tsv: `slurm_logs/00_meta/skill_system_audit_openbox_20260307_2128.refcheck.tsv`
+- summary_md: `slurm_logs/00_meta/skill_system_audit_openbox_20260307_2128.summary.md`

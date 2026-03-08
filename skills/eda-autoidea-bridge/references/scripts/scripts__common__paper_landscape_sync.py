@@ -5,17 +5,14 @@
 - global research landscape (subproblem-method-effect-group-paper)
 """
 
-from __future__ import annotations
-
 import argparse
 import csv
 import json
 import re
 from collections import defaultdict
-from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, NamedTuple, Tuple
 
 ROOT = Path(__file__).resolve().parents[2]
 SUMMARY_DIR = ROOT / "docs" / "papers" / "summaries"
@@ -33,8 +30,7 @@ GLOBAL_TSV_OUT = INDEX_DIR / "global_research_landscape.tsv"
 ANNOTATION_TSV = MANIFEST_DIR / "landscape_annotations.tsv"
 
 
-@dataclass(frozen=True)
-class Theme:
+class Theme(NamedTuple):
     key: str
     label: str
     kind: str

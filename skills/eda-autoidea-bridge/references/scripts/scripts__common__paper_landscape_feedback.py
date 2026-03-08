@@ -6,15 +6,12 @@ Outputs:
 - docs/papers/queues/literature_feedback_queue.tsv
 """
 
-from __future__ import annotations
-
 import argparse
 import csv
 from collections import defaultdict
-from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, NamedTuple, Tuple
 
 ROOT = Path(__file__).resolve().parents[2]
 GLOBAL_TSV = ROOT / "docs" / "knowledge_base" / "index" / "global_research_landscape.tsv"
@@ -22,8 +19,7 @@ OUT_MD = ROOT / "docs" / "knowledge_base" / "98_LITERATURE_FEEDBACK_LOOP.md"
 OUT_QUEUE = ROOT / "docs" / "papers" / "queues" / "literature_feedback_queue.tsv"
 
 
-@dataclass(frozen=True)
-class Topic:
+class Topic(NamedTuple):
     key: str
     label: str
     keywords: Tuple[str, ...]

@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Check whether a research chain workspace has required stage artifacts."""
 
-from __future__ import annotations
-
 import argparse
 import csv
 from datetime import datetime

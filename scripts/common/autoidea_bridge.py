@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Bridge autoIdea outputs into this repo's paper/knowledge/idea infrastructure."""
 
-from __future__ import annotations
-
 import argparse
 import csv
 import json

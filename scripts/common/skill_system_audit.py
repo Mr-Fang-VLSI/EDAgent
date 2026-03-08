@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from __future__ import annotations
 
 import argparse
 import csv
@@ -7,7 +6,7 @@ import re
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Set, Tuple
 
 
 def parse_args() -> argparse.Namespace:
@@ -46,7 +45,7 @@ def is_semver(v: str) -> bool:
     return bool(re.match(r"^[0-9]+\.[0-9]+\.[0-9]+$", (v or "").strip()))
 
 
-def read_tool_ids(tool_catalog_path: Path) -> set:
+def read_tool_ids(tool_catalog_path: Path) -> Set[str]:
     if not tool_catalog_path.exists():
         return set()
     with tool_catalog_path.open("r", encoding="utf-8", errors="ignore") as f:

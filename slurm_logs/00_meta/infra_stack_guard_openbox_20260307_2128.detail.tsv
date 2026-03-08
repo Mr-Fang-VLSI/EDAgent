@@ -31,7 +31,7 @@ skill_system	backside-routing-realization-specialist -> bspdn-physical-contract-
 skill_system	backside-routing-realization-specialist -> eda-method-implementer	info	PASS	dependency target exists
 skill_system	backside-routing-realization-specialist -> workflow-scoped-execution	info	PASS	dependency target exists
 skill_system	skills/eda-artifact-hygiene-maintainer/SKILL.md	critical	PASS	skill body exists
-skill_system	skills/eda-artifact-hygiene-maintainer/agents/openai.yaml	warning	WARN	ui metadata missing
+skill_system	skills/eda-artifact-hygiene-maintainer/agents/openai.yaml	warning	PASS	ui metadata exists
 skill_system	eda-artifact-hygiene-maintainer -> eda-context-accessor	info	PASS	dependency target exists
 skill_system	eda-artifact-hygiene-maintainer -> eda-infra-maintainer	info	PASS	dependency target exists
 skill_system	skills/bscost-net/SKILL.md	critical	PASS	skill body exists

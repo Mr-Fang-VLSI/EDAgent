@@ -4,14 +4,12 @@
 The bundle is self-contained for governance docs and skill-local script mirrors.
 """
 
-from __future__ import annotations
-
 import argparse
 import csv
 import shutil
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Set
+from typing import Dict, List, Optional, Set
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -21,7 +19,7 @@ def safe_copy(src: Path, dst: Path) -> None:
     shutil.copy2(src, dst)
 
 
-def copy_tree_filtered(src: Path, dst: Path, ignore_names: Set[str] | None = None) -> None:
+def copy_tree_filtered(src: Path, dst: Path, ignore_names: Optional[Set[str]] = None) -> None:
     ignore_names = ignore_names or set()
     if dst.exists():
         shutil.rmtree(dst)
@@ -69,7 +67,7 @@ def normalize_filename(rel_path: str) -> str:
 
 
 def build_bundle(out_dir: Path) -> None:
-    git_backup: Path | None = None
+    git_backup = None  # type: Optional[Path]
     if out_dir.exists():
         git_dir = out_dir / '.git'
         if git_dir.exists():
@@ -127,6 +125,7 @@ def build_bundle(out_dir: Path) -> None:
         'unified_kb_query.py',
         'autoidea_bridge.py',
         'build_agent_skill_bundle.py',
+        'conda_project_env_report.py',
     }
     (out_dir / 'scripts' / 'common').mkdir(parents=True, exist_ok=True)
     for name in common_keep:
@@ -191,7 +190,7 @@ def build_bundle(out_dir: Path) -> None:
                 '## Installation',
                 '### Prerequisites',
                 '- Linux/macOS shell environment',
-                '- `python3` (3.10+ recommended)',
+                '- `python3` (3.6+ for bootstrap; newer recommended for optional utilities)',
                 '- `git`',
                 '',
                 '### Codex Deployment Prompt (Copy/Paste)',

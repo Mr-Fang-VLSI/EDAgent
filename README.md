@@ -1,6 +1,6 @@
 # EDA Agent + Skill Standalone Bundle
 
-- generated_at: `2026-03-07 21:04:00`
+- generated_at: `2026-03-07 21:25:29`
 - source_repo: `/mnt/research/Hu_Jiang/Students/Fang_Donghao/TAMU-ASAP07-BSPDN-BPR-V0.00`
 
 ## What It Can Do
@@ -18,7 +18,7 @@
 ## Installation
 ### Prerequisites
 - Linux/macOS shell environment
-- `python3` (3.10+ recommended)
+- `python3` (3.6+ for bootstrap; newer recommended for optional utilities)
 - `git`
 
 ### Codex Deployment Prompt (Copy/Paste)

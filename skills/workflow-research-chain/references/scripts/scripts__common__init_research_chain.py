@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Initialize a full EDA research-chain workspace with stage folders and starter artifacts."""
 
-from __future__ import annotations
-
 import argparse
 from datetime import datetime
 from pathlib import Path

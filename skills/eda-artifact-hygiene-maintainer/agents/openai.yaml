@@ -1,0 +1,4 @@
+interface:
+  display_name: "EDA Artifact Hygiene Maintainer"
+  short_description: "Clean and normalize KB/tool/log artifacts"
+  default_prompt: "Use this skill to merge duplicates, archive stale artifacts, normalize naming, and report cleanup actions without changing repo-wide governance intent."

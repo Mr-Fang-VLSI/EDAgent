@@ -10,9 +10,8 @@ import argparse
 import csv
 import os
 import re
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Set
+from typing import Dict, Iterable, List, NamedTuple, Optional, Set
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -48,8 +47,7 @@ CATALOG_FIELDS = [
 ]
 
 
-@dataclass
-class Entry:
+class Entry(NamedTuple):
     tool_id: str
     tool_type: str
     lifecycle: str

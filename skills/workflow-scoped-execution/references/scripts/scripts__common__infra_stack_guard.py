@@ -1,21 +1,17 @@
 #!/usr/bin/env python3
 """Audit core infrastructure integrity: AGENTS policy, KB, tool registry, and skills."""
 
-from __future__ import annotations
-
 import argparse
 import csv
-from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, NamedTuple
 
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
-@dataclass
-class CheckRow:
+class CheckRow(NamedTuple):
     scope: str
     item: str
     level: str
