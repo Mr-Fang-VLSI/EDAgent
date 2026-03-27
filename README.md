@@ -11,6 +11,7 @@
 
 ## Open-Source Scope
 - This repository is for research and experimentation.
+- Licensed under the MIT License; see `LICENSE`.
 - No production SLA, no warranty, and no guarantee of correctness for all environments.
 - Please validate results independently before any high-stakes use.
 - See `CONTRIBUTING.md` for contribution workflow and `ROADMAP.md` for current priorities.
