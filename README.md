@@ -3,6 +3,10 @@
 - generated_at: `2026-03-07 23:36:11`
 - source_repo: `/mnt/research/Hu_Jiang/Students/Fang_Donghao/TAMU-ASAP07-BSPDN-BPR-V0.00`
 
+## License
+EDAgent is released under the **MIT License**.
+You may use, modify, and redistribute this repository under the terms in [`LICENSE`](LICENSE).
+
 ## What It Can Do
 - Govern end-to-end EDA research workflow from idea to validation and retrospective.
 - Manage literature flow: retrieval, local PDF parsing, evidence indexing, and landscape updates.
