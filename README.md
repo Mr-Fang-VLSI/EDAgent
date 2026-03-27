@@ -5,6 +5,8 @@
 
 A deployable, skill-based research agent system for EDA workflows.
 
+Licensed under the MIT License; see `LICENSE`.
+
 ![EDAgent Workflow Overview](docs/assets/workflow_overview.svg)
 
 ### Workflow Decision Logic
