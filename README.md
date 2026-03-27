@@ -1,7 +1,7 @@
 # EDAgent
 
 ![GitHub stars](https://img.shields.io/github/stars/Mr-Fang-VLSI/EDAgent)
-![License](https://img.shields.io/github/license/Mr-Fang-VLSI/EDAgent)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 A deployable, skill-based research agent system for EDA workflows.
 
