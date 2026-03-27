@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic Writing Quality Assessor"
+  short_description: "Audit thesis and paper writing quality with LaTeX-aware checks"
+  default_prompt: "Use $academic-writing-quality-assessor to audit and refine an academic manuscript for structure, terminology consistency, LaTeX hygiene, and must-fix grammar errors."
