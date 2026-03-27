@@ -5,7 +5,9 @@
 
 A deployable, skill-based research agent system for EDA workflows.
 
-Licensed under the MIT License; see `LICENSE`.
+## License
+EDAgent is released under the **MIT License**.
+You may use, modify, and redistribute this repository under the terms in [`LICENSE`](LICENSE).
 
 ![EDAgent Workflow Overview](docs/assets/workflow_overview.svg)
 
